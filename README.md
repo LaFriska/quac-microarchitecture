@@ -2,9 +2,11 @@
 
 This repository contains a *modified* version of my original submission for [Assignment 1](https://comp.anu.edu.au/courses/comp2300/assessments/assignment-1/) as a student at the Australian National University for the course [COMP2300 - Computer Architecture](https://programsandcourses.anu.edu.au/2025/course/COMP2300). Note that assignment-specific files are removed, and this repository contains only the necessary files to showcase my work. The `report.md` file specified in the assignment had also been merged into the `README.md`.
 
-I declare that everything in this repository is entirely my own work, aside from the **Feedback and Marks** section of this file, which were provided by ANU. 
+- I declare that everything in this repository is entirely my own work.
 
-Note also this repository is a shallow clone of the original assignment repository, hence very few commits are shown. 
+- Note that various components of this project provided by ANU School of Computing had been deleted to comply with copyright policies. These include the original `README.md`, and many provided Digital test cases.
+
+- Note also this repository is a shallow clone of the original assignment repository, hence very few commits are shown. 
 
 # Report 
 
@@ -215,32 +217,11 @@ Several unit tests are provided in `unit_tests/`, which are converted to Digital
 
 The array is 64-bits to demonstrate base+offset addressing, nested loops of bubble-sort use function calls, array iteration uses pre/post-offset addressing, and `SETC` is used for comparisons. Other extensions are demonstrated throughout the code. I also implemented other algorithms like `demo-factorial.quac` and `demo-fib.quac` in the root directory.
 
-# Feedback and Marks
+# Final Assignment Marks
 
 ```
-mark: 97
-
-section_marks:
-  part1: 20
-  part2: 47
-  report: 30
+Total: 97/100
+Section A: 20/20
+Section B: 47/50
+Report: 30/30
 ```
-
-## Assignment 1 
-This assignment is very well done and you have shown a very good understanding of CPUs and QuAC assembly programming.
-Hopefully this assignment has taught you a lot about how real world computers execute programs 🙂.
-
-
-### Basic CPU
-All the tests pass.
-
-
-### Extended CPU
-Your extended CPU is very well thought out and well designed. The extensions build ontop of each other well showcasing some
-clear thought in to how you have decided to design your extensions to build ontop of on one another. Your allocations of the instruction opcodes
-is also well considered to simplify the logic for both your ALU operations and pre/post + base/offset addresing. The use of a condition register also effectively expands your instruction set and this is justified well in your report. Overall good style as well with extensive testing to verify your extensions are correct.
-
-### Report
-The report is very well formatted and covers all the relevant changes to the base ISA and microarchitecture. Good discussion of trade off and analysis in your report in relation to your CPU and real world programs.
-
-
