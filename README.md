@@ -8,7 +8,7 @@ Note also this repository is a shallow clone of the original assignment reposito
 
 # Report 
 
-This report describes my microarchitecture implementation  in Digital and ISA design for the extended [QuAC](https://comp.anu.edu.au/courses/comp2300/resources/quac-assembler/). In this report, `bn` represents the n'th bit of instruction, e.g. `b14` is bit 14. 
+This report describes my microarchitecture implementation  in [Digital](https://github.com/hneemann/Digital) and ISA design for the extended [QuAC](https://comp.anu.edu.au/courses/comp2300/resources/quac-assembler/). In this report, `bn` represents the n'th bit of instruction, e.g. `b14` is bit 14. 
 
 ## Overview
 
