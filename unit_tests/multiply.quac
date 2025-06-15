@@ -1,0 +1,22 @@
+CALL 11 @This is a very simple code that multiplies R1 with R2.
+MOVL PC, 21 @Signifies end of the code, moves PC to the end. 
+ADD R4, R4, R2 @Function to add R2 to R4 to itself then decrement R3.
+SUB R3, 1
+RET
+NOP
+NOP @Function to repeatedly add R3 to R4 until R3 is 0. 
+CALL 2
+RETz
+MOVL PC, 7
+NOP
+NOP @Main function
+LDR R2, [19]
+LDR R3, [20]
+CALL 6
+RET
+NOP
+NOP
+NOP
+.word 11  @Stores the numbers we are trying to multiply in address 19, 20. 
+.word 13
+MOVL R2, 0  @End, R4 should be mem[20] x mem[21]. 

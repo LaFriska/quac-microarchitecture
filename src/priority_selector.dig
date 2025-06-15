@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes>
+    <entry>
+      <string>Description</string>
+      <string>Accepts two 16-bit inputs, if one
+is zero, output the non-zero input.
+If both are non-zero, the second
+input takes precedence.</string>
+    </entry>
+    <entry>
+      <string>romContent</string>
+      <romList>
+        <roms/>
+      </romList>
+    </entry>
+    <entry>
+      <string>Width</string>
+      <int>5</int>
+    </entry>
+  </attributes>
+  <visualElements>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>OUT</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1420" y="380"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>IN2</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="920" y="180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>IN1</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="980" y="180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>PRI</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1060" y="180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>IN1	IN2	PRI EN1 EN2 OUT
+0x0000  0x0000  1   0   0   0x0000
+0x0000  0xAAAA  1   0   1   0xAAAA
+0xABCD  0x0000  1   1   0   0xABCD
+0x0000  0x0000  0   0   0   0x0000
+0x0000  0xAAAA  0   0   1   0xAAAA
+0xABCD  0x0000  0   1   0   0xABCD
+0x1234  0xABCD  1   1   1   0xABCD
+0x1234  0xABCD  0   1   1   0x1234
+
+0xABCD 0x1234   1   1   1   0x1234
+0x3030 0xD0E0   0   1   1   0x3030</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="1620" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>textFontSize</string>
+          <int>16</int>
+        </entry>
+        <entry>
+          <string>Description</string>
+          <string>This component accepts two 16-bit
+inputs, and enable lines respectively.
+This is used in the dual port register file
+to choose which input to let in the write port
+of a register. If both EN1 and EN2 are on,
+then input 2 takes precedence if PRI is set to 1,
+otherwise input 1 takes precedence. If only
+one is set to true, the associated input
+will be output unmodified. If both enable
+lines are 0, then the behaviour remains
+undefined.</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1620" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>EN2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1200" y="180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>EN1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1260" y="180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Input Splitting</string>
+          <string>1,1</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>2</string>
+        </entry>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+      </elementAttributes>
+      <pos x="1240" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>flipSelPos</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+        <entry>
+          <string>Selector Bits</string>
+          <int>2</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1220" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Ground</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1180" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>flipSelPos</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1040" y="440"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="1240" y="240"/>
+      <p2 x="1260" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="240"/>
+      <p2 x="1220" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="920" y="480"/>
+      <p2 x="1040" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="400"/>
+      <p2 x="1220" y="400"/>
+    </wire>
+    <wire>
+      <p1 x="1180" y="340"/>
+      <p2 x="1220" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="360"/>
+      <p2 x="1220" y="360"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="440"/>
+      <p2 x="1040" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="920" y="380"/>
+      <p2 x="1220" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1260" y="380"/>
+      <p2 x="1420" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1080" y="460"/>
+      <p2 x="1200" y="460"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="180"/>
+      <p2 x="1200" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="400"/>
+      <p2 x="1200" y="460"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="180"/>
+      <p2 x="980" y="360"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="360"/>
+      <p2 x="980" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="1060" y="180"/>
+      <p2 x="1060" y="440"/>
+    </wire>
+    <wire>
+      <p1 x="1240" y="260"/>
+      <p2 x="1240" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="920" y="180"/>
+      <p2 x="920" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="920" y="380"/>
+      <p2 x="920" y="480"/>
+    </wire>
+    <wire>
+      <p1 x="1260" y="180"/>
+      <p2 x="1260" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="1180" y="320"/>
+      <p2 x="1180" y="340"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>

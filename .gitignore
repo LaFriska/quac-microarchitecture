@@ -1,0 +1,15 @@
+*program.bin
+*.o
+*.a
+
+# files & folders you don't want in the repo
+.DS_Store
+Desktop.ini
+._*
+.Spotlight-V100
+.Trashes
+
+tests/.idea
+tests/.venv
+other
+.obsidian

@@ -1,0 +1,349 @@
+{
+    "registers": {
+        "RZ": "R0",
+        "FL": "R7",
+        "SP": "R6",
+        "PC": "R5"
+    },
+    "conditions": {
+        "AL": {
+            "short": "AL",
+            "description": "Always",
+            "machine": "0"
+        },
+        "Z": {
+            "short": "Z",
+            "description": "Zero",
+            "machine": "1"
+        },
+        "N": {
+            "short": "N",
+            "description": "Zero",
+            "machine": "1"
+        },
+        "C": {
+            "short": "C",
+            "description": "Zero",
+            "machine": "1"
+        },
+        "V": {
+            "short": "V",
+            "description": "Zero",
+            "machine": "1"
+        }
+    },
+    "instructions": {
+        "MOVL (imm)": {
+            "syntax": "MOVL? <RD:reg>, <IMM8:uint8>",
+            "machine": "0000 C RD IMM8",
+            "semantic": "RD := 0000 0000 IMM8",
+            "description": "Zero extends IMM8 to a 16 bit value and stores it in RD",
+            "pseudo": false,
+            "class": "imm"
+        },
+        "SETH (imm)": {
+            "syntax": "SETH? <RD:reg>, <IMM8:uint8>",
+            "machine": "0010 C RD IMM8",
+            "semantic": "RD := (IMM8 << 8) | (RD & 0xFF)",
+            "description": "Replaces the upper byte of RD with IMM8, leaving the lower byte unchanged",
+            "pseudo": false,
+            "class": "imm"
+        },
+        "LDR (reg)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>]",
+            "machine": "0100 C RD 0 RA 0 000",
+            "semantic": "RD := mem[RA]",
+            "description": "Loads the 16 bit value at the address in RA into RD",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (imm)": {
+            "syntax": "STR? <RD:reg>, [<IMM8:uint8>]",
+            "machine": "0110 C RD IMM8",
+            "semantic": "mem[IMM8] := RD",
+            "description": "Stores RD into the memory addressed by IMM8",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (imm)": {
+            "syntax": "LDR? <RD:reg>, [<IMM8:uint8>]",
+            "machine": "0101 C RD IMM8",
+            "semantic": "RD := mem[IMM8]",
+            "description": "Loads the 16 bit value at the address in IMM8 into RD",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (off)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>, <RB:reg>]",
+            "machine": "0100 C RD 0 RA 0 RB",
+            "semantic": "RD := mem[RA + RB]",
+            "description": "Loads the 16 bit value at the address in RA + RB into RD",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (offim)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>, <IMM4:xint4>]",
+            "machine": "0100 C RD 1 RA IMM4",
+            "semantic": "RD := mem[RA + IMM4]",
+            "description": "Loads the 16 bit value at the address in RA + IMM4 into RD",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (post)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>], <RB:reg>",
+            "machine": "1011 C RD 0 RA 1 RB",
+            "semantic": "RD := mem[RA]; RA := RA + RB",
+            "description": "Loads the 16 bit value at the address in RA into RD, then increment RA by RB.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (postim)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>], <IMM4:xint4>",
+            "machine": "1011 C RD 1 RA IMM4",
+            "semantic": "RD := mem[RA]; RA := RA + IMM4",
+            "description": "Loads the 16 bit value at the address in RA into RD, then increment RA by IMM4.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (pre)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>, <RB:reg>]!",
+            "machine": "1010 C RD 0 RA 1 RB",
+            "semantic": "RA := RA + RB; RD := mem[RA]",
+            "description": "Increment RA by RB then load the content held by address in RA into RD.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "LDR (preim)": {
+            "syntax": "LDR? <RD:reg>, [<RA:reg>, <IMM4:xint4>]!",
+            "machine": "1010 C RD 1 RA IMM4",
+            "semantic": " RA := RA + IMM4; RD := mem[RA];",
+            "description": "Increment RA by IMM4, then loads the 16 bit value at the address in RA into RD.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (reg)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>]",
+            "machine": "0111 C RD 0 RA 0 000",
+            "semantic": "mem[RA] := RD",
+            "description": "Stores the value in RD in memory at the address in RA",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (off)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>, <RB:reg>]",
+            "machine": "0111 C RD 0 RA 0 RB",
+            "semantic": "mem[RA + RB] := RD",
+            "description": "Stores the value in RD in memory at the address in RA + RB",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (offim)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>, <IMM4:xint4>]",
+            "machine": "0111 C RD 1 RA IMM4",
+            "semantic": "mem[RA + IMM4] := RD",
+            "description": "Stores the value in RD in memory at the address in RA + IMM4",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (post)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>], <RB:reg>",
+            "machine": "1001 C RD 0 RA 1 RB",
+            "semantic": "mem[RA] := RD; RA := RA + RB",
+            "description": "Stores the value in RD in memory at the address in RA, then increment RA by RB.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (postim)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>], <IMM4:xint4>",
+            "machine": "1001 C RD 1 RA IMM4",
+            "semantic": "mem[RA] := RD; RA := RA + IMM4",
+            "description": "Stores the value in RD in memory at the address in RA, then increment RA by IMM4.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (pre)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>, <RB:reg>]!",
+            "machine": "1000 C RD 0 RA 1 RB",
+            "semantic": "RA := RA + RB; mem[RA] := RD;",
+            "description": "Increments RA by RB, then stores the value in RD in memory at the address in RA.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "STR (preim)": {
+            "syntax": "STR? <RD:reg>, [<RA:reg>, <IMM4:xint4>]!",
+            "machine": "1000 C RD 1 RA IMM4",
+            "semantic": "RA := RA + IMM4; mem[RA] := RD;",
+            "description": "Increments RA by IMM4, then stores the value in RD in memory at the address in RA.",
+            "pseudo": false,
+            "class": "mem"
+        },
+        "AND (reg)": {
+            "syntax": "AND? {<RD:reg?RA>, } <RA:reg>, <RB:reg>",
+            "machine": "1000 C RD 0 RA 0 RB",
+            "semantic": "RD := RA & RB",
+            "description": "Bitwise ANDs the values in RA and RB and stores the result in RD",
+            "pseudo": false,
+            "class": "alu"
+        },
+        "ORR (reg)": {
+            "syntax": "ORR? {<RD:reg?RA>, } <RA:reg>, <RB:reg>",
+            "machine": "1001 C RD 0 RA 0 RB",
+            "semantic": "RD := RA | RB",
+            "description": "Bitwise ORs the values in RA and RB and stores the result in RD",
+            "pseudo": false,
+            "class": "alu"
+        },
+        "ADD (reg)": {
+            "syntax": "ADD? {<RD:reg?RA>, } <RA:reg>, <RB:reg>",
+            "machine": "1010 C RD 0 RA 0 RB",
+            "semantic": "RD := RA + RB",
+            "description": "Adds the values in RA and RB and stores the result in RD",
+            "pseudo": false,
+            "class": "alu"
+        },
+        "SUB (reg)": {
+            "syntax": "SUB? {<RD:reg?RA>, } <RA:reg>, <RB:reg>",
+            "machine": "1011 C RD 0 RA 0 RB",
+            "semantic": "RD := RA - RB",
+            "description": "Subtracts the value in RB from the value in RA and stores the result in RD",
+            "pseudo": false,
+            "class": "alu"
+        },
+        "MOV (reg)": {
+            "syntax": "MOV? <RD:reg>, <RA:reg>",
+            "machine": "1010 C RD 0 RA 0 000",
+            "semantic": "RD := RA",
+            "description": "Moves the contents of register RA into RD (alias for `ADD RD, RA, RZ`)",
+            "pseudo": true,
+            "class": "alu"
+        },
+        "JPR (reg)": {
+            "syntax": "JPR? <RA:reg>",
+            "machine": "1010 C 101 0 RA 0 000",
+            "semantic": "PC := RA",
+            "description": "Jumps to the absolute address in RA (alias for `ADD PC, RA, RZ`)",
+            "pseudo": true,
+            "class": "alu"
+        },
+        "CMP (reg)": {
+            "syntax": "CMP? <RA:reg>, <RB:reg>",
+            "machine": "1011 C 000 0 RA 0 RB",
+            "semantic": "RA - RB",
+            "description": "Performs RA - RB and discards the result. The flags are still updated. (alias for `SUB RZ, RA, RB`)",
+            "pseudo": true,
+            "class": "alu"
+        },
+        "TST (reg)": {
+            "syntax": "TST? <RA:reg>",
+            "machine": "1010 C 000 0 RA 0 000",
+            "semantic": "RA + 0",
+            "description": "Performs RA + 0 and discards the result. The flags are still updated, showing if RA is negative or zero. (alias for `ADD RZ, RA, RZ`)",
+            "pseudo": true,
+            "class": "alu"
+        },
+        "NOP": {
+            "syntax": "NOP",
+            "machine": "0000 0 000 0 000 0 000",
+            "semantic": "do nothing",
+            "description": "The 'do nothing' instruction. Running this has no effect on the state of the CPU. (alias for `MOVL RZ, 0`)",
+            "pseudo": true,
+            "class": "imm"
+        },
+        "JPM (reg)": {
+            "syntax": "JPM? [<RA:reg>]",
+            "machine": "0100 C 101 0 RA 0 000",
+            "semantic": "PC := mem[RA]",
+            "description": "Loads the value from the address stored in RA into the PC. (alias for `LDR PC, [RA]`)",
+            "pseudo": true,
+            "class": "mem"
+        },
+        "JP": {
+            "syntax": "JP? <IMM8:uint8>",
+            "machine": "0000 C 101 IMM8",
+            "semantic": "PC := 0000 0000 IMM8",
+            "description": "Jump to the given immediate value address. (alias for `MOVL PC, IMM8`)",
+            "pseudo": true,
+            "class": "imm"
+        },
+        "AND (imm)": {
+            "syntax": "AND? <RD:reg>, <IMM8:uint8>",
+            "machine": "1100 C RD IMM8",
+            "semantic": "RD := (IMM8 << 8) | (RD & 0xFF)",
+            "description": "Bitwise ANDs imm8 and RD and stores the result in RD",
+            "pseudo": false,
+            "class": "imm"
+        },
+        "ORR (imm)": {
+            "syntax": "ORR? <RD:reg>, <IMM8:uint8>",
+            "machine": "1101 C RD IMM8",
+            "semantic": "RD := (IMM8 << 8) | (RD & 0xFF)",
+            "description": "Bitwise ORs imm8 and RD and stores the result in RD",
+            "pseudo": false,
+            "class": "imm"
+        },
+        "ADD (imm)": {
+            "syntax": "ADD? <RD:reg>, <IMM8:uint8>",
+            "machine": "1110 C RD IMM8",
+            "semantic": "RD := (IMM8 << 8) | (RD & 0xFF)",
+            "description": "Adds imm8 to RD and stores the result in RD",
+            "pseudo": false,
+            "class": "imm"
+        },
+        "SUB (imm)": {
+            "syntax": "SUB? <RD:reg>, <IMM8:uint8>",
+            "machine": "1111 C RD IMM8",
+            "semantic": "RD := (IMM8 << 8) | (RD & 0xFF)",
+            "description": "Subtracts imm8 from RD and stores the result in RD",
+            "pseudo": false,
+            "class": "imm"
+        },
+        "SETC": {
+            "syntax": "SETC? <FLAG:uint2>",
+            "machine": "0011 C 0 FLAG 00000001",
+            "semantic": "RC := FLAG",
+            "description": "Loads the FLAG into the condition register.",
+            "pseudo": false,
+            "class": "other"
+        },
+        "PUSH": {
+            "syntax": "PUSH? <RD:reg>",
+            "machine": "1000 C RD 1110 1111",
+            "semantic": "SP := SP - 1, mem[SP] := RD",
+            "description": "Pushes RD to the call stack.",
+            "pseudo": true,
+            "class": "other"
+        },
+        "POP": {
+            "syntax": "POP? <RD:reg>",
+            "machine": "1011 C RD 1110 0001",
+            "semantic": "RD := mem[SP], SP := SP + 1",
+            "description": "Pops the stack, and stores the element into RD.",
+            "pseudo": true,
+            "class": "other"
+        },
+        "RET": {
+            "syntax": "RET?",
+            "machine": "1011 C 101 1 110 0001",
+            "semantic": "PC := mem[SP], SP := SP + 1",
+            "description": "Pops the callstack into the program counter.",
+            "pseudo": true,
+            "class": "other"
+        },
+        "CALL (reg)": {
+            "syntax": "CALL? <RD:reg>",
+            "machine": "0011 C RD 0000 0000",
+            "semantic": "SP := SP - 1, mem[SP] := PC, PC := RD",
+            "description": "Pushes the program counter to the callstack and jumps it to new address.",
+            "pseudo": false,
+            "class": "other"
+        },
+        "CALL (imm)": {
+            "syntax": "CALL? <IMM11:uint11>",
+            "machine": "0001 C IMM11",
+            "semantic": "SP := SP - 1, mem[SP] := PC, PC := IMM11",
+            "description": "Pushes the program counter to the callstack and jumps it to new address.",
+            "pseudo": false,
+            "class": "other"
+        }
+    }
+}

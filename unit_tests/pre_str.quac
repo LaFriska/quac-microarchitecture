@@ -1,0 +1,34 @@
+NOP @------------------------------------R-format-----------------------------------------@
+NOP @We'll use R1 to hold address and R2 to hold data. R3 to hold offset.
+MOVL R1, 100 @Base address is 100. 
+MOVL R2, 0xFF
+MOVL R3, 119
+STR R2, [R1, R3]! @ R1 := 219; mem[439] := 0xFF
+MOVL R4, 219
+LDR R4, [R4] @R4 should be 0xFF = 255.
+MOVL R2, 0xED
+MOVL R3, 0
+SUB R3, 30 @Tests negative values, R3 := 65506 \cong -30 (mod 2^16)
+STR R2, [R1, R3]! @R1 := 189, mem[189] := 0xED
+MOVL R4, 189
+LDR R4, [R4] @R4 := 0xED = 237. 
+NOP @------------------------------------I-format-----------------------------------------@
+MOVL R1, 200
+MOVL R2, 40
+STR R2, [R1, 5]! @R1 := 205, mem[205] := 40
+MOVL R2, 9
+STR R2, [R1, -7]! @R1 := 198, mem[198] := 9
+MOVL R2, 41
+STR R2, [R1, 0]! @mem[198] := 41
+MOVL R2, 42
+STR R2, [R1, -1]! @R1 := 197, mem[197] := 42
+MOVL R2, 43
+STR R2, [R1, 4]! @R1 := 201, mem[201] := 43
+MOVL R1, 205
+MOVL R2, 198
+MOVL R3, 197
+MOVL R4, 201
+LDR R1, [R1] @R1 := 40
+LDR R2, [R2] @R1 := 41
+LDR R3, [R3] @R1 := 42
+LDR R4, [R4] @R1 := 43

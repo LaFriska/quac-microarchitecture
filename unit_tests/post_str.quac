@@ -1,0 +1,30 @@
+NOP @------------------------------------R-format-----------------------------------------@
+MOVL R1, 192 @Address is 192
+MOVL R2, 0xAB @Value to store
+MOVL R3, 0x04 @Amount to increment
+STR R2, [R1], R3 @R1 should now be 196
+MOVL R2, 192
+LDR R2, [R2] @R2 should be AB = 171
+MOVL R2, 0xDE
+MOVL R3, 0x0A
+STR R2, [R1], R3 @R1 should be 206.
+MOVL R2, 196
+LDR R4, [R2] @R4 should now be 222.
+NOP @------------------------------------I-format-----------------------------------------@
+MOVL R1, 222
+MOVL R2, 0xFF
+STR R2, [R1], -5 @0xFF stored in 222, R1 = 217.
+MOVL R2, 0xEE
+STR R2, [R1], 6 @0xEE stored in 217, R1 = 223
+MOVL R2, 0xD8
+STR R2, [R1], -7 @0xD8 stored in 223, R1 = 216
+MOVL R2, 0x89
+STR R2, [R1], 1 @0x89 stored in 216, R1 = 217.
+MOVL R1, 222
+MOVL R2, 217
+MOVL R3, 223
+MOVL R4, 216
+LDR R1, [R1] @ Expected: R1 = 0xFF = 255
+LDR R2, [R2] @ Expected: R2 = 0xEE = 238
+LDR R3, [R3] @ Expected: R3 = 0xD8 = 216
+LDR R4, [R4] @ Expected: R4 = 0x89 = 137

@@ -1,0 +1,49 @@
+NOP @This is a unit test for Base+Offset Addressing.
+NOP 
+NOP
+MOVL R1, 3      @ Rd
+MOVL R2, 0xF0   @ Ra
+MOVL R3, 0      @ Rb
+STR R1, [R2, R3]
+MOVL R3, 1
+MOVL R1, 4
+STR R1, [R2, R3]
+MOVL R3, 2
+MOVL R1, 5
+STR R1, [R2, R3]
+MOVL R3, 3
+MOVL R1, 6
+STR R1, [R2, R3]
+LDR R1, [R2, R4]
+MOVL R4, 1
+LDR R3, [R2, R4]
+MOVL R4, 2
+LDR R4, [R2, R4]
+NOP @R1 = 3
+NOP @R3 = 4
+NOP @R4 = 5
+MOVL R2, 0x0B
+MOVL R1, 0xE0
+STR R2, [R1, -1]
+MOVL R2, 0x1B
+STR R2, [R1, -8]
+MOVL R2, 0x2B
+STR R2, [R1, 7]
+MOVL R2, 0x3B
+STR R2, [R1, 4]
+MOVL R3, 0x05
+STR R3, [R1, 2]
+MOVL R3, 0x06
+STR R3, [R1, -4]
+MOVL R3, 0x07
+STR R3, [R1, -5]
+MOVL R3, 0x08
+STR R3, [R1, 6]
+LDR R2, [R1, 7] 
+LDR R3, [R1, -5] 
+LDR R4, [R1, -8] 
+LDR R1, [R1, 0] 
+@R1 = 0
+@R2 = 0x2B
+@R3 = 0x07
+@R4 = 0x1B

@@ -1,0 +1,25 @@
+NOP @ Ensures PUSH/POP pseudo-instructions work
+NOP 
+NOP 
+MOVL R1, 1
+MOVL R2, 0xAB 
+MOVL R3, 0xDE
+MOVL R4, 0x23
+PUSH R1
+PUSH R2
+PUSH R3
+PUSH R4
+POP R0 
+POP R0 
+MOVL R1, 0xCA
+MOVL R2, 0xE9
+PUSH R1
+PUSH R2
+POP R1 
+POP R2 
+POP R3 
+POP R4 
+@ R1 = 0xE9
+@ R2 = 0xCA
+@ R3 = 0xAB
+@ R4 = 0x01

@@ -1,0 +1,30 @@
+NOP @------------------------------------R-format-----------------------------------------@
+MOVL R1, 200 @Offset = 4
+MOVL R2, 24
+MOVL R3, 204
+MOVL R4, 25
+STR R2, [R1]
+STR R4, [R3]
+MOVL R4, 0
+SUB R2, R3, R1 @R2 holds the offset
+LDR R4, [R1, R2]! @R1 := 204 R4 := 25
+SUB R2, R0, R2 @Negates the offset
+LDR R2, [R1, R2]! @R1 := 200 R2 := 24
+MOVL R1, 200 @Offset = -11
+MOVL R2, 255
+MOVL R3, 189
+MOVL R4, 4
+STR R2, [R1]
+STR R4, [R3]
+MOVL R4, 0
+SUB R2, R3, R1 @R2 holds the offset
+LDR R4, [R1, R2]! @R1 := 189 R4 := 4
+SUB R2, R0, R2 @Negates the offset
+LDR R2, [R1, R2]! @R1 := 200 R2 := 255
+NOP @------------------------------------I-format-----------------------------------------@
+MOVL R2, 200
+MOVL R4, 195
+MOVL R1, 68
+STR R1, [R4]
+LDR R4, [R2, -5]! @R2 := 195, R4 := 68
+LDR R4, [R2, 5]! @R2 := 200, R4 := 255

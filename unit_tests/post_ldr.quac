@@ -1,0 +1,33 @@
+NOP @------------------------------------R-format-----------------------------------------@
+MOVL R1, 200 @Offset = 4
+MOVL R2, 24
+MOVL R3, 204
+MOVL R4, 25
+STR R2, [R1]
+STR R4, [R3]
+SUB R2, R3, R1 @R2 holds the offset
+LDR R2, [R1], R2 @ R2 := 24, R1 := 204
+LDR R4, [R1], R2 @ R4 := 25, R1 := 228
+MOVL R1, 180 @Offset = -10
+MOVL R2, 34
+MOVL R3, 170
+MOVL R4, 35
+STR R2, [R1]
+STR R4, [R3]
+SUB R2, R3, R1 @R2 holds the offset
+LDR R2, [R1], R2 @ R2 := 34, R1 := 170
+MOVL R3, 120
+SUB R3, R0, R3
+LDR R4, [R1], R3 @ R4 := 35, R1 := 50
+NOP @------------------------------------I-format-----------------------------------------@
+MOVL R1, 200 @Address
+MOVL R2, 255 @Data
+STR R2, [R1]
+LDR R3, [R1], 0 @ R1 := 200
+LDR R4, [R1], -4 @ R1 := 196
+MOVL R1, 190 @Address
+MOVL R2, 212 @Data
+MOVL R4, 1 @Dummy
+STR R2, [R1]
+LDR R3, [R1], 7 @ R3 := 212, R1 := 197
+LDR R4, [R1], -4 @ R4 := 0, R1 := 193

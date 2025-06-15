@@ -1,0 +1,60 @@
+MOVL R1, 7
+STR R1, [0xF0] @ This script computes the factorial of the value held in R1, which is stored in mem[0x00F0].
+SETH R2, 0x10  @ R2 holds the pointer to an array starting from mem[0x1000]. This program will then fill the array with factorials up until R1. At the end, the resulting factorial value will be stored in R4.  
+MOVL R3, 1     @ These two lines of code stores the base case of factorials, that is, 0! = 1. 
+STR R3, [R2] 
+CALL 45
+MOVL PC, 59
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP
+NOP                 @ func multiply: //Multiplies mem[0xF1] and mem[0xF2] and stores the result in mem[0xF3]. This is done using repeated addition. This assumes none of the inputs are 0. 
+MOVL R4, 0
+LDR R1, [0xF1]      @      R1 := mem[0xF1]
+LDR R3, [0xF2]      @      R3 := mem[0xF2]
+ADD R0, R1, R0      @      while R1 != 0
+STRz R4, [0xF3]     @           R4 := R3 + R4
+RETz                @           R1 := R1 - 1
+ADD R4, R4, R3      @      end while  
+SUB R1, 1           @      mem[0xF3] := R4
+SUB PC, 5           @      return
+NOP
+NOP 
+NOP 
+NOP 
+NOP                 @ func nextFactorial:               //Computes the next factorials, and increment R2. 
+LDR R1, [R2]        @      mem[0xF1] := mem[R2]         //Defines the current factorial as first number to multiply. 
+STR R1, [0xF1]      @      mem[0xF2] := R2 - 0x1000     //The offset is the second number to multiply. 
+MOVL R3, 0          @      call multiply
+SETH R3, 0x10       @      R2 := R2 + 1
+SUB R3, R2, R3      @      mem[R2] := mem[0xF3]
+ADD R3, 1
+STR R3, [0xF2]
+CALL 15
+LDR R1, [0xF3]
+STR R1, [R2, 1]! 
+RET
+NOP
+NOP 
+NOP 
+NOP 
+NOP                 @ func recurseFactorial            //Computes the factorial of number specified in mem[0x00F0] and stores it in R4 and mem[0x00F4].
+MOVL R1, 0
+SETH R1, 0x10       @   while mem[0x00F0] - (R2 - 0x1000) != 0
+SUB R1, R2, R1      @       call nextFactorial
+LDR R3, [0x00F0]    @   end while
+SUB R0, R3, R1      @   R4, mem[0x00F4] := mem[R2]
+LDRz R4, [R2]       @   return
+STRz R4, [0x00F4]
+RETz 
+CALL 29
+SUB PC, 9
+NOP 
+NOP 
+NOP 
+NOP 
+NOP

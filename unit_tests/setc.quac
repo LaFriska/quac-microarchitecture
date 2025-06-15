@@ -1,0 +1,30 @@
+NOP @This is a unit test for 
+SETC 1
+ADD R0, 0 @Zero flag set
+MOVLz R1, 0xFF @Should do nothing
+SUB R0, 5 @Negative flag set
+MOVLz R1, 0xFF @R1 := 255
+SETC 2
+MOVLz R1, 0x00 @Do nothing
+SETC 3
+MOVLz R1, 0x00 @Do nothing
+SETC 0
+MOVLz R1, 0x00 @Do nothing
+SETC 1
+MOVLz R1, 0x00 @R1 := 0x00
+SETC 0
+ADD R0, 0x00
+MOVLz R1, 0xFF @R1 := 0xFF
+SETC 3
+MOVL R1, 1
+SETH R1, 0b01000001 @R1 := 16641
+ADD R1, R1, R1 @Sets V and N, FL := 6
+MOVL R1, 0   @R1 := 0
+SETC 0
+MOVLz R2, 50 @Do nothing
+SETC 1
+MOVLz R2, 50 @R2 := 50
+SETC 2
+MOVLz R3, 60 @R3 := 60
+SETC 3
+MOVLz R2, 70 @Do nothing

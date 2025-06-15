@@ -1,0 +1,184 @@
+CALL 17         @ This program is a bubble sort algorithm on key-value pairs, where keys are 16-bits, and values are 48-bits. Hence, a 64-bit array is 
+CALL 110        @ implemented starting from mem[0x0300], where each element occupies four 16-bit slots in the memory. Bubble sort compares the key of each array 
+MOVL PC, 122    @ entry, but swaps both the key and value, preserving the key-value relation. The range [0x00F0, 0x0100) is also used to store temporary variables
+NOP             @ during the execution of this program. For simplicity, this program assumes the array is always of length 5. 
+NOP             @
+NOP             @ Note that this program is designed with the intent to show off all my extensions, hence it is NOT 100% optimal, memory-efficient, etc. 
+NOP             @
+NOP             @
+NOP 
+NOP         @CLEARREG: function to clear the registers
+MOVL R1, 0
+MOVL R2, 0
+MOVL R3, 0
+MOVL R4, 0
+RET
+NOP 
+NOP         @INIT: Function to initialise the variables and array. 
+CALL 10          @Calls CLEARREG 
+NOP          
+SETH R1, 0x03   @Beginning of array
+NOP             @Initialise keys:
+MOVL R2, 130 
+STR R2, [R1], 4
+MOVL R2, 50 
+STR R2, [R1], 4
+MOVL R2, 40 
+STR R2, [R1], 4
+MOVL R2, 201 
+STR R2, [R1], 4
+MOVL R2, 3 
+STR R2, [R1], 4
+MOVL R1, 0x00   @Resets the array pointer 
+SETH R1, 0x03
+NOP             @Initialise values:
+MOVL R2, 1
+MOVL R3, 2
+MOVL R4, 3
+STR R2, [R1, 1]!
+STR R3, [R1, 1]!
+STR R4, [R1, 1]!
+MOVL R2, 4
+MOVL R3, 5
+MOVL R4, 6
+STR R2, [R1, 2]!
+STR R3, [R1, 1]!
+STR R4, [R1, 1]!
+MOVL R2, 7
+MOVL R3, 8
+MOVL R4, 9
+STR R2, [R1, 2]!
+STR R3, [R1, 1]!
+STR R4, [R1, 1]!
+MOVL R2, 10
+MOVL R3, 11
+MOVL R4, 12
+STR R2, [R1, 2]!
+STR R3, [R1, 1]!
+STR R4, [R1, 1]!
+MOVL R2, 100
+MOVL R3, 110
+MOVL R4, 120
+STR R2, [R1, 2]!
+STR R3, [R1, 1]!
+STR R4, [R1, 1]!
+MOVL R1, 0         @Initialise (i, j)-pointer
+SETH R1, 3
+STR R1, [0xF2]
+MOVL R2, 16        @ 16 = 4 * 4, so the i pointer will point to the key of the last element. 
+ADD R1, R1, R2 
+STR R1, [0xF1]
+RET 
+NOP 
+NOP                 @SWAP: swaps all the key and the values, mem[j:3] with mem[j+4:3].
+SETC 0              @ Use zero flag for equality comparison for a for-loop to precisely 4. 
+LDR R1, [0xF2]      @ R1 := j
+MOVL R2, 0          @ R2 := 0
+LDR R3, [R1, R2]    @ for R2 from 0 to 4
+ADD R1, 4           @   temp := mem[R1 + R2]
+LDR R4, [R1, R2]    @   mem[R1 + R2] := mem[R1 + 4 + r2]
+STR R3, [R1, R2]    @   mem[R1 + 4 + R2] := temp
+SUB R1, 4           @ end for
+STR R4, [R1, R2]
+ADD R2, 1
+MOVL R3, 4
+SUB R0, R2, R3 
+RETz
+SUB PC, 10
+NOP 
+NOP 
+NOP                 @LOOPJ: Loops j from 0 to i-1, and swaps j and j+1 element if the keys are in the wrong order. 
+MOVL R1, 0          @ j := 0
+SETH R1, 3          @ for j < i, j += 4:
+STR R1, [0xF2]      @    if mem[j] > mem[j+1]
+LDR R2, [0xF2]      @       SWAP
+LDR R1, [0xF1]      @    end if
+SETC 0              @ end for
+SUB R0, R1, R2
+RETz 
+SETC 1
+LDR R3, [R2]
+LDR R4, [R2, 4]
+SUB R0, R4, R3 
+CALLz 73
+SETC 1
+LDR R2, [0xF2]
+ADD R2, 4
+STR R2, [0xF2]
+SUB PC, 13
+NOP 
+NOP                 @LOOPI: Loops i down to 0, where for each step we call LOOPJ to partially sort the array.
+SETC 0
+MOVL R1, 90         @(Storing 90 in R1 then calling it just to demonstrate that CALL also works for R-format.)
+CALL R1             @   for i > 0, i -= 4:
+LDR R2, [0xF1]      @       LOOPJ
+SUB R2, 4           @   end for
+STR R2, [0xF1]      @   return 
+MOVL R3, 0
+SETH R3, 3
+SUB R0, R2, R3 
+RETz
+SUB PC, 9
+NOP                 
+MOVL R1, 0       @ --------!!END!!----------- clock cycle = 596
+SETH R1, 0x03    @ THE FOLLOWING CODE LOADS EACH ITEM IN THE ARRAY IN A REGISTER SO THAT I COULD CONVERT IT TO A DIGITAL TEST. 
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+LDR R2, [R1]
+ADD R1, 1
+LDR R2, [R1] 
+ADD R1, 1
+@   THE RESULTING MEMORY ARRAY ARE AS FOLLOWS. (Can be derived from right clicking into RAM and running this program.)
+@
+@	0x0003	0x0064	0x006E	0x0078	0x0028	0x0007	0x0008	0x0009	0x0032	0x0004	0x0005	0x0006	0x0082	0x0001	0x0002	0x0003
+@	0x00C9	0x000A	0x000B	0x000C
+@
+@   Where the key value pairs were input as follows. (Note that the program is intended to sort the key, it does NOT compare values, only shift them according to the key). 
+@   Key0: 0x0082, Values0: 0x0001, 0x0002, 0x0003
+@   Key1: 0x0032, Values1: 0x0004, 0x0005, 0x0006
+@   Key2: 0x0028, Values2: 0x0007, 0x0008, 0x0009
+@   Key3: 0x00C9, Values3: 0x000A, 0x000B, 0x000C
+@   Key4: 0x0003, Values4: 0x0064, 0x006E, 0x0078
+@
+@   AFTER SORTING,
+@   Key0: 0x0003, Values0: 0x0064, 0x006E, 0x0078
+@   Key1: 0x0028, Values1: 0x0007, 0x0008, 0x0009
+@   Key2: 0x0032, Values2: 0x0004, 0x0005, 0x0006
+@   Key3: 0x0082, Values3: 0x0001, 0x0002, 0x0003
+@   Key4: 0x00C9, Values4: 0x000A, 0x000B, 0x000C
+@
+@   Thus, our program and code works! It sorts the key-value pairs by the key, and preserve the relation between each key-value pair.

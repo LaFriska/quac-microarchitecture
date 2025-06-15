@@ -1,0 +1,58 @@
+NOP @This is a unit test for immediate ALU instructions.
+NOP @-------------------ADD----------------
+ADD R1, 1
+ADD R1, 2
+ADD R1, 3
+ADD R1, 4
+ADD R1, 5
+ADD R1, 6
+ADD R1, 7
+ADD R1, 8
+ADD R1, 9
+ADD R1, 10
+ADD R1, 11
+ADD R1, 12
+ADD R1, 13
+ADD R1, 14
+ADD R1, 15
+ADD R1, 16
+ADD R1, 17
+ADD R1, 18
+ADD R1, 19
+ADD R1, 20 @After 22 clock cycles, R1 should be 210
+MOVL R2, 210
+SUB R2, 20
+SUB R2, 19
+SUB R2, 18
+SUB R2, 17
+SUB R2, 16
+SUB R2, 15
+SUB R2, 14
+SUB R2, 13
+SUB R2, 12
+SUB R2, 11
+SUB R2, 10
+SUB R2, 9
+SUB R2, 8
+SUB R2, 7 @ After 15 more clock cycles, R1 should be 21
+MOVL R3, 0b11111111
+AND R3,  0b11111111
+AND R3,  0b11111011
+AND R3,  0b10111111
+AND R3,  0b10111011
+AND R3,  0b11111111
+AND R3,  0b11111110
+AND R3,  0b01111111
+NOP@R3 = 0b00111010 = 58 after 8 more clock cycles.
+ORR R4, 0b00000000
+ORR R4, 0b00000001
+ORR R4, 0b10000001
+ORR R4, 0b00010000
+ORR R4, 0b00100000
+ORR R4, 0b00000001
+ORR R4, 0b01000000
+NOP@R4 =0b11110001 = 241 after 7 clock cycles. 
+@ R1 = 210
+@ R2 = 21
+@ R3 = 58
+@ R4 = 241

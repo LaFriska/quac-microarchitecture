@@ -1,0 +1,3001 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>GP_PC</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R1=0x5;
+init R2=0x98;
+0        x      x      x      x 0x0000
+c   0x0005 0x0098      x      x 0x0001
+c   0x0005 0x0098      x      x 0x0002
+c   0x0005 0x0002      x      x 0x0003
+c   0x0005 0x0002      x      x 0x0005
+
+program(0xa000,0xa000,0xa250,0xa510,0x03ff,0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>READ_FLAGS</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R1=0x76;
+init R4=0xF;
+0        x      x      x      x 0x0000
+c   0x0076 0x0000      x 0x000f 0x0001
+c   0x0076 0x0000      x 0x000f 0x0002
+c   0x0076 0x0000 0x0009 0x000f 0x0003
+
+program(0xb211, 0xa370, 0x8334)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="-20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>FLAGS</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4   FLAGS     PC
+
+declare FLAGS = FL &amp; 0xF;
+
+init R1=1;
+init R2=0xFFFF;
+init R3=0x7FFF;
+init R4=0x8000;
+0        x      x      x      x      x 0x0000
+c   0x0001 0xffff 0x7fff 0x8000 0x0001 0x0001
+c   0x0001 0xffff 0x7fff 0x8000 0x0009 0x0002
+c   0x0001 0xffff 0x7fff 0x8000 0x0009 0x0003
+c   0x0001 0xffff 0x7fff 0x8000 0x0000 0x0004
+c   0x0001 0xffff 0x7fff 0x8000 0x000A 0x0005
+c   0x0001 0xffff 0x7fff 0x8000 0x000A 0x0006
+c   0x0001 0xffff 0x7fff 0x8000 0x0002 0x0007
+c   0x0001 0xffff 0x7fff 0x8000 0x0002 0x0008
+c   0x0001 0xffff 0x7fff 0x8000 0x000c 0x0009
+c   0x0001 0xffff 0x7fff 0x8000 0x0008 0x000a
+c   0x0001 0xffff 0x7fff 0x8000 0x000c 0x000b
+c   0x0001 0xffff 0x7fff 0x8000 0x0006 0x000c
+
+program(0xa000, 0xa012, 0xb011, 0xb012, 0xa022, 0xb021, 0xa034, 0xa041, 0xb041, 0xb031, 0xb043, 0xa013)</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="-100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>ALU</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>
+CLK     R1     R2     R3     R4   FLAGS     PC
+
+declare FLAGS = FL &amp; 0xF;
+
+init R1=0x1A;
+init R2=0xCDFF;
+init R3=0x0;
+
+0        x      x      x      x      x 0x0000
+c   0x001a 0xcdff      x 0xce19 0x0002 0x0001
+c   0x001a 0xcdff      x 0x001a 0x0000 0x0002
+c   0x001a 0xcdff      x 0xcdff 0x000A 0x0003
+c   0x001a 0xcdff      x 0x3201 0x0000 0x0004
+c   0x001a 0xcdff      x 0x0000 0x0001 0x0005
+c   0x001a 0xcdff      x 0x0000 0x0001 0x0006
+c   0x001a 0xcdff      x 0xcdff 0x0002 0x0007
+c   0x001a 0xcdff      x 0xcdff 0x0002 0x0008
+c   0x0000 0xcdff      x 0xcdff 0x0001 0x0009
+c   0x0000 0x0000      x 0xcdff 0x0001 0x000a
+
+program(0xa412, 0x8421, 0xb423, 0xb432, 0x8413, 0x8431, 0x9412, 0x9012, 0xa100, 0xa230)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1560" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>FIB</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4   FLAGS     PC
+
+declare FLAGS = FL &amp; 0xF;
+
+0        x      x      x      x      x 0x0000
+c   0x0001      x      x      x      x 0x0001
+c   0x0001 0x0000      x      x      x 0x0002
+c   0x0001 0x0000 0x0019      x      x 0x0003
+c   0x0001 0x0000 0x0019      x 0x0008 0x0004
+c   0x0001 0x0000 0x0019      x 0x0008 0x0005
+c   0x0001 0x0000 0x0019 0x0001 0x0000 0x0006
+c   0x0000 0x0000 0x0019 0x0001 0x0001 0x0007
+c   0x0000 0x0001 0x0019 0x0001 0x0000 0x0008
+c   0x0000 0x0001 0x0019 0x0001 0x0000 0x0009
+c   0x0000 0x0001 0x0018 0x0001 0x0008 0x000a
+c   0x0000 0x0001 0x0018 0x0001 0x0008 0x0003
+c   0x0000 0x0001 0x0018 0x0001 0x0008 0x0004
+c   0x0000 0x0001 0x0018 0x0001 0x0008 0x0005
+c   0x0000 0x0001 0x0018 0x0001 0x0000 0x0006
+c   0x0001 0x0001 0x0018 0x0001 0x0000 0x0007
+c   0x0001 0x0001 0x0018 0x0001 0x0000 0x0008
+c   0x0001 0x0001 0x0018 0x0001 0x0000 0x0009
+c   0x0001 0x0001 0x0017 0x0001 0x0008 0x000a
+c   0x0001 0x0001 0x0017 0x0001 0x0008 0x0003
+c   0x0001 0x0001 0x0017 0x0001 0x0008 0x0004
+c   0x0001 0x0001 0x0017 0x0001 0x0008 0x0005
+c   0x0001 0x0001 0x0017 0x0002 0x0000 0x0006
+c   0x0001 0x0001 0x0017 0x0002 0x0000 0x0007
+c   0x0001 0x0002 0x0017 0x0002 0x0000 0x0008
+c   0x0001 0x0002 0x0017 0x0001 0x0000 0x0009
+c   0x0001 0x0002 0x0016 0x0001 0x0008 0x000a
+c   0x0001 0x0002 0x0016 0x0001 0x0008 0x0003
+c   0x0001 0x0002 0x0016 0x0001 0x0008 0x0004
+c   0x0001 0x0002 0x0016 0x0001 0x0008 0x0005
+c   0x0001 0x0002 0x0016 0x0003 0x0000 0x0006
+c   0x0002 0x0002 0x0016 0x0003 0x0000 0x0007
+c   0x0002 0x0003 0x0016 0x0003 0x0000 0x0008
+c   0x0002 0x0003 0x0016 0x0001 0x0000 0x0009
+c   0x0002 0x0003 0x0015 0x0001 0x0008 0x000a
+c   0x0002 0x0003 0x0015 0x0001 0x0008 0x0003
+c   0x0002 0x0003 0x0015 0x0001 0x0008 0x0004
+c   0x0002 0x0003 0x0015 0x0001 0x0008 0x0005
+c   0x0002 0x0003 0x0015 0x0005 0x0000 0x0006
+c   0x0003 0x0003 0x0015 0x0005 0x0000 0x0007
+c   0x0003 0x0005 0x0015 0x0005 0x0000 0x0008
+c   0x0003 0x0005 0x0015 0x0001 0x0000 0x0009
+c   0x0003 0x0005 0x0014 0x0001 0x0008 0x000a
+c   0x0003 0x0005 0x0014 0x0001 0x0008 0x0003
+c   0x0003 0x0005 0x0014 0x0001 0x0008 0x0004
+c   0x0003 0x0005 0x0014 0x0001 0x0008 0x0005
+c   0x0003 0x0005 0x0014 0x0008 0x0000 0x0006
+c   0x0005 0x0005 0x0014 0x0008 0x0000 0x0007
+c   0x0005 0x0008 0x0014 0x0008 0x0000 0x0008
+c   0x0005 0x0008 0x0014 0x0001 0x0000 0x0009
+c   0x0005 0x0008 0x0013 0x0001 0x0008 0x000a
+c   0x0005 0x0008 0x0013 0x0001 0x0008 0x0003
+c   0x0005 0x0008 0x0013 0x0001 0x0008 0x0004
+c   0x0005 0x0008 0x0013 0x0001 0x0008 0x0005
+c   0x0005 0x0008 0x0013 0x000d 0x0000 0x0006
+c   0x0008 0x0008 0x0013 0x000d 0x0000 0x0007
+c   0x0008 0x000d 0x0013 0x000d 0x0000 0x0008
+c   0x0008 0x000d 0x0013 0x0001 0x0000 0x0009
+c   0x0008 0x000d 0x0012 0x0001 0x0008 0x000a
+c   0x0008 0x000d 0x0012 0x0001 0x0008 0x0003
+c   0x0008 0x000d 0x0012 0x0001 0x0008 0x0004
+c   0x0008 0x000d 0x0012 0x0001 0x0008 0x0005
+c   0x0008 0x000d 0x0012 0x0015 0x0000 0x0006
+c   0x000d 0x000d 0x0012 0x0015 0x0000 0x0007
+c   0x000d 0x0015 0x0012 0x0015 0x0000 0x0008
+c   0x000d 0x0015 0x0012 0x0001 0x0000 0x0009
+c   0x000d 0x0015 0x0011 0x0001 0x0008 0x000a
+c   0x000d 0x0015 0x0011 0x0001 0x0008 0x0003
+c   0x000d 0x0015 0x0011 0x0001 0x0008 0x0004
+c   0x000d 0x0015 0x0011 0x0001 0x0008 0x0005
+c   0x000d 0x0015 0x0011 0x0022 0x0000 0x0006
+c   0x0015 0x0015 0x0011 0x0022 0x0000 0x0007
+c   0x0015 0x0022 0x0011 0x0022 0x0000 0x0008
+c   0x0015 0x0022 0x0011 0x0001 0x0000 0x0009
+c   0x0015 0x0022 0x0010 0x0001 0x0008 0x000a
+c   0x0015 0x0022 0x0010 0x0001 0x0008 0x0003
+c   0x0015 0x0022 0x0010 0x0001 0x0008 0x0004
+c   0x0015 0x0022 0x0010 0x0001 0x0008 0x0005
+c   0x0015 0x0022 0x0010 0x0037 0x0000 0x0006
+c   0x0022 0x0022 0x0010 0x0037 0x0000 0x0007
+c   0x0022 0x0037 0x0010 0x0037 0x0000 0x0008
+c   0x0022 0x0037 0x0010 0x0001 0x0000 0x0009
+c   0x0022 0x0037 0x000f 0x0001 0x0008 0x000a
+c   0x0022 0x0037 0x000f 0x0001 0x0008 0x0003
+c   0x0022 0x0037 0x000f 0x0001 0x0008 0x0004
+c   0x0022 0x0037 0x000f 0x0001 0x0008 0x0005
+c   0x0022 0x0037 0x000f 0x0059 0x0000 0x0006
+c   0x0037 0x0037 0x000f 0x0059 0x0000 0x0007
+c   0x0037 0x0059 0x000f 0x0059 0x0000 0x0008
+c   0x0037 0x0059 0x000f 0x0001 0x0000 0x0009
+c   0x0037 0x0059 0x000e 0x0001 0x0008 0x000a
+c   0x0037 0x0059 0x000e 0x0001 0x0008 0x0003
+c   0x0037 0x0059 0x000e 0x0001 0x0008 0x0004
+c   0x0037 0x0059 0x000e 0x0001 0x0008 0x0005
+c   0x0037 0x0059 0x000e 0x0090 0x0000 0x0006
+c   0x0059 0x0059 0x000e 0x0090 0x0000 0x0007
+c   0x0059 0x0090 0x000e 0x0090 0x0000 0x0008
+c   0x0059 0x0090 0x000e 0x0001 0x0000 0x0009
+c   0x0059 0x0090 0x000d 0x0001 0x0008 0x000a
+c   0x0059 0x0090 0x000d 0x0001 0x0008 0x0003
+c   0x0059 0x0090 0x000d 0x0001 0x0008 0x0004
+c   0x0059 0x0090 0x000d 0x0001 0x0008 0x0005
+c   0x0059 0x0090 0x000d 0x00e9 0x0000 0x0006
+c   0x0090 0x0090 0x000d 0x00e9 0x0000 0x0007
+c   0x0090 0x00e9 0x000d 0x00e9 0x0000 0x0008
+c   0x0090 0x00e9 0x000d 0x0001 0x0000 0x0009
+c   0x0090 0x00e9 0x000c 0x0001 0x0008 0x000a
+c   0x0090 0x00e9 0x000c 0x0001 0x0008 0x0003
+c   0x0090 0x00e9 0x000c 0x0001 0x0008 0x0004
+c   0x0090 0x00e9 0x000c 0x0001 0x0008 0x0005
+c   0x0090 0x00e9 0x000c 0x0179 0x0000 0x0006
+c   0x00e9 0x00e9 0x000c 0x0179 0x0000 0x0007
+c   0x00e9 0x0179 0x000c 0x0179 0x0000 0x0008
+c   0x00e9 0x0179 0x000c 0x0001 0x0000 0x0009
+c   0x00e9 0x0179 0x000b 0x0001 0x0008 0x000a
+c   0x00e9 0x0179 0x000b 0x0001 0x0008 0x0003
+c   0x00e9 0x0179 0x000b 0x0001 0x0008 0x0004
+c   0x00e9 0x0179 0x000b 0x0001 0x0008 0x0005
+c   0x00e9 0x0179 0x000b 0x0262 0x0000 0x0006
+c   0x0179 0x0179 0x000b 0x0262 0x0000 0x0007
+c   0x0179 0x0262 0x000b 0x0262 0x0000 0x0008
+c   0x0179 0x0262 0x000b 0x0001 0x0000 0x0009
+c   0x0179 0x0262 0x000a 0x0001 0x0008 0x000a
+c   0x0179 0x0262 0x000a 0x0001 0x0008 0x0003
+c   0x0179 0x0262 0x000a 0x0001 0x0008 0x0004
+c   0x0179 0x0262 0x000a 0x0001 0x0008 0x0005
+c   0x0179 0x0262 0x000a 0x03db 0x0000 0x0006
+c   0x0262 0x0262 0x000a 0x03db 0x0000 0x0007
+c   0x0262 0x03db 0x000a 0x03db 0x0000 0x0008
+c   0x0262 0x03db 0x000a 0x0001 0x0000 0x0009
+c   0x0262 0x03db 0x0009 0x0001 0x0008 0x000a
+c   0x0262 0x03db 0x0009 0x0001 0x0008 0x0003
+c   0x0262 0x03db 0x0009 0x0001 0x0008 0x0004
+c   0x0262 0x03db 0x0009 0x0001 0x0008 0x0005
+c   0x0262 0x03db 0x0009 0x063d 0x0000 0x0006
+c   0x03db 0x03db 0x0009 0x063d 0x0000 0x0007
+c   0x03db 0x063d 0x0009 0x063d 0x0000 0x0008
+c   0x03db 0x063d 0x0009 0x0001 0x0000 0x0009
+c   0x03db 0x063d 0x0008 0x0001 0x0008 0x000a
+c   0x03db 0x063d 0x0008 0x0001 0x0008 0x0003
+c   0x03db 0x063d 0x0008 0x0001 0x0008 0x0004
+c   0x03db 0x063d 0x0008 0x0001 0x0008 0x0005
+c   0x03db 0x063d 0x0008 0x0a18 0x0000 0x0006
+c   0x063d 0x063d 0x0008 0x0a18 0x0000 0x0007
+c   0x063d 0x0a18 0x0008 0x0a18 0x0000 0x0008
+c   0x063d 0x0a18 0x0008 0x0001 0x0000 0x0009
+c   0x063d 0x0a18 0x0007 0x0001 0x0008 0x000a
+c   0x063d 0x0a18 0x0007 0x0001 0x0008 0x0003
+c   0x063d 0x0a18 0x0007 0x0001 0x0008 0x0004
+c   0x063d 0x0a18 0x0007 0x0001 0x0008 0x0005
+c   0x063d 0x0a18 0x0007 0x1055 0x0000 0x0006
+c   0x0a18 0x0a18 0x0007 0x1055 0x0000 0x0007
+c   0x0a18 0x1055 0x0007 0x1055 0x0000 0x0008
+c   0x0a18 0x1055 0x0007 0x0001 0x0000 0x0009
+c   0x0a18 0x1055 0x0006 0x0001 0x0008 0x000a
+c   0x0a18 0x1055 0x0006 0x0001 0x0008 0x0003
+c   0x0a18 0x1055 0x0006 0x0001 0x0008 0x0004
+c   0x0a18 0x1055 0x0006 0x0001 0x0008 0x0005
+c   0x0a18 0x1055 0x0006 0x1a6d 0x0000 0x0006
+c   0x1055 0x1055 0x0006 0x1a6d 0x0000 0x0007
+c   0x1055 0x1a6d 0x0006 0x1a6d 0x0000 0x0008
+c   0x1055 0x1a6d 0x0006 0x0001 0x0000 0x0009
+c   0x1055 0x1a6d 0x0005 0x0001 0x0008 0x000a
+c   0x1055 0x1a6d 0x0005 0x0001 0x0008 0x0003
+c   0x1055 0x1a6d 0x0005 0x0001 0x0008 0x0004
+c   0x1055 0x1a6d 0x0005 0x0001 0x0008 0x0005
+c   0x1055 0x1a6d 0x0005 0x2ac2 0x0000 0x0006
+c   0x1a6d 0x1a6d 0x0005 0x2ac2 0x0000 0x0007
+c   0x1a6d 0x2ac2 0x0005 0x2ac2 0x0000 0x0008
+c   0x1a6d 0x2ac2 0x0005 0x0001 0x0000 0x0009
+c   0x1a6d 0x2ac2 0x0004 0x0001 0x0008 0x000a
+c   0x1a6d 0x2ac2 0x0004 0x0001 0x0008 0x0003
+c   0x1a6d 0x2ac2 0x0004 0x0001 0x0008 0x0004
+c   0x1a6d 0x2ac2 0x0004 0x0001 0x0008 0x0005
+c   0x1a6d 0x2ac2 0x0004 0x452f 0x0000 0x0006
+c   0x2ac2 0x2ac2 0x0004 0x452f 0x0000 0x0007
+c   0x2ac2 0x452f 0x0004 0x452f 0x0000 0x0008
+c   0x2ac2 0x452f 0x0004 0x0001 0x0000 0x0009
+c   0x2ac2 0x452f 0x0003 0x0001 0x0008 0x000a
+c   0x2ac2 0x452f 0x0003 0x0001 0x0008 0x0003
+c   0x2ac2 0x452f 0x0003 0x0001 0x0008 0x0004
+c   0x2ac2 0x452f 0x0003 0x0001 0x0008 0x0005
+c   0x2ac2 0x452f 0x0003 0x6ff1 0x0000 0x0006
+c   0x452f 0x452f 0x0003 0x6ff1 0x0000 0x0007
+c   0x452f 0x6ff1 0x0003 0x6ff1 0x0000 0x0008
+c   0x452f 0x6ff1 0x0003 0x0001 0x0000 0x0009
+c   0x452f 0x6ff1 0x0002 0x0001 0x0008 0x000a
+c   0x452f 0x6ff1 0x0002 0x0001 0x0008 0x0003
+c   0x452f 0x6ff1 0x0002 0x0001 0x0008 0x0004
+c   0x452f 0x6ff1 0x0002 0x0001 0x0008 0x0005
+c   0x452f 0x6ff1 0x0002 0xb520 0x0006 0x0006
+c   0x6ff1 0x6ff1 0x0002 0xb520 0x0000 0x0007
+c   0x6ff1 0xb520 0x0002 0xb520 0x0002 0x0008
+c   0x6ff1 0xb520 0x0002 0x0001 0x0002 0x0009
+c   0x6ff1 0xb520 0x0001 0x0001 0x0008 0x000a
+c   0x6ff1 0xb520 0x0001 0x0001 0x0008 0x0003
+c   0x6ff1 0xb520 0x0001 0x0001 0x0008 0x0004
+c   0x6ff1 0xb520 0x0001 0x0001 0x0008 0x0005
+c   0x6ff1 0xb520 0x0001 0x2511 0x0008 0x0006
+c   0xb520 0xb520 0x0001 0x2511 0x0002 0x0007
+c   0xb520 0x2511 0x0001 0x2511 0x0000 0x0008
+c   0xb520 0x2511 0x0001 0x0001 0x0000 0x0009
+c   0xb520 0x2511 0x0000 0x0001 0x0009 0x000a
+c   0xb520 0x2511 0x0000 0x0001 0x0009 0x0003
+c   0xb520 0x2511 0x0000 0x0001 0x0009 0x0004
+c   0xb520 0x2511 0x0000 0x0001 0x0009 0x000b
+
+program(0x0101,0x0200,0x0319,0xb030,0x0d0b,0xa412,0xa120,0xa240,0x0401,0xb334,0x0503,0x0000)</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1280" y="60"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>LOOP</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R2=1;
+init R4=0x5512;
+
+0        x      x      x      x 0x0000
+c        x      1 0x5511 0x5512 0x0001
+c   0x0000      1 0x5511 0x5510 0x0002
+c   0x0001      1 0x5511 0x5510 0x0003
+c   0x0001      1 0x5511 0x5510 0x0004
+c   0x0001      1 0x5511 0x5510 0x0005
+
+c   0x0001      1 0x5511 0x5510 0x0000
+c   0x0001      1 0x550F 0x5510 0x0001
+c   0x0001      1 0x550F 0x5500 0x0002
+c   0x0002      1 0x550F 0x5500 0x0003
+c   0x0002      1 0x550F 0x5500 0x0004
+c   0x0002      1 0x550F 0x5500 0x0005
+
+c   0x0002      1 0x550F 0x5500 0x0000
+c   0x0002      1 0x54FF 0x5500 0x0001
+c   0x0002      1 0x54FF 0x5400 0x0002
+c   0x0003      1 0x54FF 0x5400 0x0003
+c   0x0003      1 0x54FF 0x5400 0x0004
+c   0x0003      1 0x54FF 0x5400 0x0005
+
+c   0x0003      1 0x54FF 0x5400 0x0000
+c   0x0003      1 0x53FF 0x5400 0x0001
+c   0x0003      1 0x53FF 0x5000 0x0002
+c   0x0004      1 0x53FF 0x5000 0x0003
+c   0x0004      1 0x53FF 0x5000 0x0004
+c   0x0004      1 0x53FF 0x5000 0x0005
+
+c   0x0004      1 0x53FF 0x5000 0x0000
+c   0x0004      1 0x4FFF 0x5000 0x0001
+c   0x0004      1 0x4FFF 0x4000 0x0002
+c   0x0005      1 0x4FFF 0x4000 0x0003
+c   0x0005      1 0x4FFF 0x4000 0x0004
+c   0x0005      1 0x4FFF 0x4000 0x0005
+
+c   0x0005      1 0x4FFF 0x4000 0x0000
+c   0x0005      1 0x3FFF 0x4000 0x0001
+c   0x0005      1 0x3FFF 0x0000 0x0002
+c   0x0006      1 0x3FFF 0x0000 0x0003
+c   0x0006      1 0x3FFF 0x0000 0x0004
+c   0x0006      1 0x3FFF 0x0000 0x0006
+c   0x0006      1 0x3FFF 0x0006 0x0007
+c   0x0000      1 0x3FFF 0x0006 0x0008
+c   0x0000      1 0x3FFF 0x0006 0x0009
+c   0x0000      1 0x3FFF 0x0006 0x000A
+c   0x0000      1 0x3FFF 0x0006 0x000B
+c   0x0000      1 0x3FFF 0x0006 0x0000
+c   0x0000      1 0x0005 0x0006 0x0001
+c   0x0000      1 0x0005 0x0004 0x0002
+c   0x0001      1 0x0005 0x0004 0x0003
+c   0x0001      1 0x0005 0x0004 0x0004
+c   0x0001      1 0x0005 0x0004 0x0005
+c   0x0001      1 0x0005 0x0004 0x0000
+c   0x0001      1 0x0003 0x0004 0x0001
+c   0x0001      1 0x0003 0x0000 0x0002
+c   0x0002      1 0x0003 0x0000 0x0003
+c   0x0002      1 0x0003 0x0000 0x0004
+c   0x0002      1 0x0003 0x0000 0x0006
+c   0x0002      1 0x0003 0x0002 0x0007
+c   0x0000      1 0x0003 0x0002 0x0008
+c   0x0000      1 0x0003 0x0002 0x0009
+c   0x0000      1 0x0003 0x0002 0x000A
+c   0x0000      1 0x0003 0x0002 0x000B
+c   0x0000      1 0x0003 0x0002 0x0000
+c   0x0000      1 0x0001 0x0002 0x0001
+c   0x0000      1 0x0001 0x0000 0x0002
+c   0x0001      1 0x0001 0x0000 0x0003
+c   0x0001      1 0x0001 0x0000 0x0004
+c   0x0001      1 0x0001 0x0000 0x0006
+c   0x0001      1 0x0001 0x0001 0x0007
+c   0x0000      1 0x0001 0x0001 0x0008
+c   0x0000      1 0x0001 0x0001 0x0009
+c   0x0000      1 0x0001 0x0001 0x00FF
+
+
+program(0xb342,0x8443,0xa112,0xb040,0x0d06,0x0500,0x9401,0x0100,0xb024,0x0dff,0x8110,0x0d00)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1280" y="-100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>COND</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+0        x      x      x      x 0x0000
+c   0x0000      x      x      x 0x0001
+c   0x0000 0x0000      x      x 0x0002
+c   0x0000 0x0000 0x0016      x 0x0003
+c   0x0000 0x0000 0x0016 0x0001 0x0004
+c   0x0000 0x0000 0x0016 0x0001 0x0005
+c   0x0000 0x0001 0x0016 0x0001 0x0006
+c   0x0000 0x0001 0x0016 0x0001 0x0007
+c   0x0000 0x0001 0x0016 0x0001 0x0008
+c   0x0000 0x0001 0x0016 0x0001 0x0009
+c   0x0000 0x0001 0x0016 0x0001 0x000a
+c   0x1337 0x0001 0x0016 0x0001 0x000b
+c   0x1337 0x0001 0x0017 0x0001 0x000c
+c   0x1337 0x0001 0x0017 0x0001 0x000d
+c   0x1337 0x0000 0x0017 0x0001 0x000e
+c   0x1337 0x0000 0x0017 0x0001 0x000f
+c   0x1337 0x0000 0x0017 0x0001 0x0010
+c   0x1337 0x1337 0x0017 0x0001 0x0011
+c   0x1337 0x1337 0x0017 0x0001 0x0012
+c   0x1337 0x1337 0x0017 0x0001 0x0013
+c   0x1337 0x1337 0x0017 0x0001 0x0014
+c   0x0051 0x1337 0x0017 0x0001 0x0015
+
+program(0x0100, 0x0200, 0x0316, 0x0401, 0xa000, 0xaa04, 0x9944, 0xb040, 0x4930, 0xb000, 0x4930, 0xa334, 0x7930, 0x4230, 0xb000, 0x7930, 0x4230, 0xb040, 0x0915, 0xb000, 0x0951, 0x0000, 0x1337)</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="60"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>CHECK</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># assert these registers can be tested
+CLK R1 R2 R3 R4 FL PC
+
+program(0)  # assert program memory exists
+init R1=0;  # assert we can initialise R1
+init R2=0;  # assert we can initialise R2
+init R3=0;  # assert we can initialise R3
+init R4=0;  # assert we can initialise R4
+init PC=0;  # assert we can initialise PC
+init FL=0;  # assert we can initialise FL
+
+0 0 0 0 0 0 0</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1560" y="-180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>ADD/SUB</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R1=0x1234;
+init R2=0xABCD;
+init R3=0xFFFF;
+
+0        x      x      x      x 0x0000
+c        x      x      x 0xBE01 0x0001
+c        x      x      x 0xBE01 0x0002
+c        x      x      x 0xBE02 0x0003
+c        x      x      x 0xABCE 0x0004
+c        x      x      x 0x0001 0x0005
+c        x      x      0 0x0001 0x0006
+
+program(0xa412,0xa440,0xb443,0xb441,0xb442,0xa343)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1560" y="60"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>LDR/STR</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R1=0x6;
+init R4=0x7;
+
+0        x      x      x      x 0x0000
+c        x 0x4200      x      x 0x0001
+c        x 0x4200      x      x 0x0002
+c        x 0x4200 0x0005      x 0x0003
+c   0x4410 0x4200 0x0005      x 0x0004
+c   0x4410 0x4200 0x0005      x 0x0005
+c   0x4410 0x4200 0x0005 0x4200 0x0006
+c   0x4410 0x4200 0x0005 0x4200 0x0007
+
+program(0x4200,0x7210,0x4340,0x4130,0x7210,0x4410,0x0001,0x0005)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1560" y="140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>SETH</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R1=0xAD;
+init R2=0x0D;
+init R3=0xEF;
+init R4=0xAD;
+0        x      x      x      x 0x0000
+c   0xdead 0x000d 0x00ef 0x00ad 0x0001
+c   0xdead 0xf00d 0x00ef 0x00ad 0x0002
+c   0xdead 0xf00d 0xbeef 0x00ad 0x0003
+c   0xdead 0xf00d 0xbeef 0x0bad 0x0004
+
+program(0x21de,0x22f0,0x23be,0x240b)</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1280" y="140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>MOVL</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+0        x      x      x      x 0x0000
+c   0x0012      x      x      x 0x0001
+c   0x0012 0x0034      x      x 0x0002
+c   0x0012 0x0034 0x0056      x 0x0003
+c   0x0012 0x0034 0x0056 0x0078 0x0004
+c   0x0000 0x0034 0x0056 0x0078 0x0005
+c   0x0000 0x0001 0x0056 0x0078 0x0006
+
+program(0x0112,0x0234,0x0356,0x0478,0x0100,0x0201)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1560" y="-100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>AND/ORR</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+init R2=0x5a96;
+init R3=0x5849;
+init R4=0xa569;
+
+0        x      x      x      x 0x0000
+c   0xFFFF      x      x      x 0x0001
+c   0xFFFF 0x5800      x      x 0x0002
+c   0xFFFF 0x5800 0x0049      x 0x0003
+c   0xFFFF 0x5800 0x0049 0xFFFF 0x0004
+c   0x0000 0x5800 0x0049 0xFFFF 0x0005
+c   0x0000 0x5800 0x0049 0xFFFF 0x0006
+
+program(0x9124,0x8232,0x8343,0x9410,0x8123,0x9333)
+
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1560" y="-20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>REC</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+0        x      x      x      x 0x0000
+c        x      x      x 0x0000 0x0001
+c   0x0020      x      x 0x0000 0x0002
+c   0x0020 0x0008      x 0x0000 0x0003
+c   0x0020 0x0008 0x0001 0x0000 0x0004
+c   0x0021 0x0008 0x0001 0x0000 0x0005
+c   0x0021 0x0008 0x0001 0xffff 0x0006
+c   0x0021 0x0008 0x001f 0xffff 0x0007
+c   0x0021 0x0008 0x001f 0xffff 0x0008
+c   0x0021 0x0008 0x001f 0xffff 0x0009
+c   0x0021 0x0008 0x001f 0xffff 0x000a
+c   0x0021 0x0008 0x0001 0xffff 0x000b
+c   0x0021 0x0008 0x0001 0xfffe 0x000c
+c   0x0021 0x0008 0x0001 0xfffe 0x000d
+c   0x000f 0x0008 0x0001 0xfffe 0x000e
+c   0x000f 0x0008 0x0001 0xfffd 0x000f
+c   0x000f 0x0008 0x0001 0xfffd 0x0010
+c   0x000f 0x0007 0x0001 0xfffd 0x0011
+c   0xfffe 0x0007 0x0001 0xfffd 0x0012
+c   0x0021 0x0007 0x0001 0xfffd 0x0013
+c   0x0022 0x0007 0x0001 0xfffd 0x0014
+c   0x0022 0x0007 0x0001 0xfffc 0x0015
+c   0x0022 0x0007 0x0018 0xfffc 0x0016
+c   0x0022 0x0007 0x0018 0xfffc 0x0017
+c   0x0022 0x0007 0x0018 0xfffc 0x0008
+c   0x0022 0x0007 0x0018 0xfffc 0x0009
+c   0x0022 0x0007 0x0018 0xfffc 0x000a
+c   0x0022 0x0007 0x0001 0xfffc 0x000b
+c   0x0022 0x0007 0x0001 0xfffb 0x000c
+c   0x0022 0x0007 0x0001 0xfffb 0x000d
+c   0x0004 0x0007 0x0001 0xfffb 0x000e
+c   0x0004 0x0007 0x0001 0xfffa 0x000f
+c   0x0004 0x0007 0x0001 0xfffa 0x0010
+c   0x0004 0x0006 0x0001 0xfffa 0x0011
+c   0xfffb 0x0006 0x0001 0xfffa 0x0012
+c   0x0022 0x0006 0x0001 0xfffa 0x0013
+c   0x0023 0x0006 0x0001 0xfffa 0x0014
+c   0x0023 0x0006 0x0001 0xfff9 0x0015
+c   0x0023 0x0006 0x0018 0xfff9 0x0016
+c   0x0023 0x0006 0x0018 0xfff9 0x0017
+c   0x0023 0x0006 0x0018 0xfff9 0x0008
+c   0x0023 0x0006 0x0018 0xfff9 0x0009
+c   0x0023 0x0006 0x0018 0xfff9 0x000a
+c   0x0023 0x0006 0x0001 0xfff9 0x000b
+c   0x0023 0x0006 0x0001 0xfff8 0x000c
+c   0x0023 0x0006 0x0001 0xfff8 0x000d
+c   0x0005 0x0006 0x0001 0xfff8 0x000e
+c   0x0005 0x0006 0x0001 0xfff7 0x000f
+c   0x0005 0x0006 0x0001 0xfff7 0x0010
+c   0x0005 0x0005 0x0001 0xfff7 0x0011
+c   0xfff8 0x0005 0x0001 0xfff7 0x0012
+c   0x0023 0x0005 0x0001 0xfff7 0x0013
+c   0x0024 0x0005 0x0001 0xfff7 0x0014
+c   0x0024 0x0005 0x0001 0xfff6 0x0015
+c   0x0024 0x0005 0x0018 0xfff6 0x0016
+c   0x0024 0x0005 0x0018 0xfff6 0x0017
+c   0x0024 0x0005 0x0018 0xfff6 0x0008
+c   0x0024 0x0005 0x0018 0xfff6 0x0009
+c   0x0024 0x0005 0x0018 0xfff6 0x000a
+c   0x0024 0x0005 0x0001 0xfff6 0x000b
+c   0x0024 0x0005 0x0001 0xfff5 0x000c
+c   0x0024 0x0005 0x0001 0xfff5 0x000d
+c   0x0006 0x0005 0x0001 0xfff5 0x000e
+c   0x0006 0x0005 0x0001 0xfff4 0x000f
+c   0x0006 0x0005 0x0001 0xfff4 0x0010
+c   0x0006 0x0004 0x0001 0xfff4 0x0011
+c   0xfff5 0x0004 0x0001 0xfff4 0x0012
+c   0x0024 0x0004 0x0001 0xfff4 0x0013
+c   0x0025 0x0004 0x0001 0xfff4 0x0014
+c   0x0025 0x0004 0x0001 0xfff3 0x0015
+c   0x0025 0x0004 0x0018 0xfff3 0x0016
+c   0x0025 0x0004 0x0018 0xfff3 0x0017
+c   0x0025 0x0004 0x0018 0xfff3 0x0008
+c   0x0025 0x0004 0x0018 0xfff3 0x0009
+c   0x0025 0x0004 0x0018 0xfff3 0x000a
+c   0x0025 0x0004 0x0001 0xfff3 0x000b
+c   0x0025 0x0004 0x0001 0xfff2 0x000c
+c   0x0025 0x0004 0x0001 0xfff2 0x000d
+c   0x0007 0x0004 0x0001 0xfff2 0x000e
+c   0x0007 0x0004 0x0001 0xfff1 0x000f
+c   0x0007 0x0004 0x0001 0xfff1 0x0010
+c   0x0007 0x0003 0x0001 0xfff1 0x0011
+c   0xfff2 0x0003 0x0001 0xfff1 0x0012
+c   0x0025 0x0003 0x0001 0xfff1 0x0013
+c   0x0026 0x0003 0x0001 0xfff1 0x0014
+c   0x0026 0x0003 0x0001 0xfff0 0x0015
+c   0x0026 0x0003 0x0018 0xfff0 0x0016
+c   0x0026 0x0003 0x0018 0xfff0 0x0017
+c   0x0026 0x0003 0x0018 0xfff0 0x0008
+c   0x0026 0x0003 0x0018 0xfff0 0x0009
+c   0x0026 0x0003 0x0018 0xfff0 0x000a
+c   0x0026 0x0003 0x0001 0xfff0 0x000b
+c   0x0026 0x0003 0x0001 0xffef 0x000c
+c   0x0026 0x0003 0x0001 0xffef 0x000d
+c   0x0008 0x0003 0x0001 0xffef 0x000e
+c   0x0008 0x0003 0x0001 0xffee 0x000f
+c   0x0008 0x0003 0x0001 0xffee 0x0010
+c   0x0008 0x0002 0x0001 0xffee 0x0011
+c   0xffef 0x0002 0x0001 0xffee 0x0012
+c   0x0026 0x0002 0x0001 0xffee 0x0013
+c   0x0027 0x0002 0x0001 0xffee 0x0014
+c   0x0027 0x0002 0x0001 0xffed 0x0015
+c   0x0027 0x0002 0x0018 0xffed 0x0016
+c   0x0027 0x0002 0x0018 0xffed 0x0017
+c   0x0027 0x0002 0x0018 0xffed 0x0008
+c   0x0027 0x0002 0x0018 0xffed 0x0009
+c   0x0027 0x0002 0x0018 0xffed 0x000a
+c   0x0027 0x0002 0x0001 0xffed 0x000b
+c   0x0027 0x0002 0x0001 0xffec 0x000c
+c   0x0027 0x0002 0x0001 0xffec 0x000d
+c   0x0009 0x0002 0x0001 0xffec 0x000e
+c   0x0009 0x0002 0x0001 0xffeb 0x000f
+c   0x0009 0x0002 0x0001 0xffeb 0x0010
+c   0x0009 0x0001 0x0001 0xffeb 0x0011
+c   0xffec 0x0001 0x0001 0xffeb 0x0012
+c   0x0027 0x0001 0x0001 0xffeb 0x0013
+c   0x0028 0x0001 0x0001 0xffeb 0x0014
+c   0x0028 0x0001 0x0001 0xffea 0x0015
+c   0x0028 0x0001 0x0018 0xffea 0x0016
+c   0x0028 0x0001 0x0018 0xffea 0x0017
+c   0x0028 0x0001 0x0018 0xffea 0x0008
+c   0x0028 0x0001 0x0018 0xffea 0x0009
+c   0x0028 0x0001 0x0018 0xffea 0x000a
+c   0x0028 0x0001 0x0001 0xffea 0x000b
+c   0x0028 0x0001 0x0001 0xffe9 0x000c
+c   0x0028 0x0001 0x0001 0xffe9 0x000d
+c   0x000a 0x0001 0x0001 0xffe9 0x000e
+c   0x000a 0x0001 0x0001 0xffe8 0x000f
+c   0x000a 0x0001 0x0001 0xffe8 0x0010
+c   0x000a 0x0000 0x0001 0xffe8 0x0011
+c   0xffe9 0x0000 0x0001 0xffe8 0x0012
+c   0x0028 0x0000 0x0001 0xffe8 0x0013
+c   0x0029 0x0000 0x0001 0xffe8 0x0014
+c   0x0029 0x0000 0x0001 0xffe7 0x0015
+c   0x0029 0x0000 0x0018 0xffe7 0x0016
+c   0x0029 0x0000 0x0018 0xffe7 0x0017
+c   0x0029 0x0000 0x0018 0xffe7 0x0008
+c   0x0029 0x0000 0x0018 0xffe7 0x0009
+c   0x0029 0x0000 0x0018 0xffe7 0x0018
+c   0x0029 0x0000 0x0001 0xffe7 0x0019
+c   0x0029 0x0000 0x0001 0xffe8 0x001a
+c   0x000a 0x0000 0x0001 0xffe8 0x001b
+c   0x000a 0x000a 0x0001 0xffe8 0x001c
+c   0x000a 0x000a 0x0002 0xffe8 0x001d
+c   0x000a 0x000a 0x0002 0xffea 0x001e
+c   0x000a 0x000a 0x0002 0xffea 0x0018
+c   0x000a 0x000a 0x0001 0xffea 0x0019
+c   0x000a 0x000a 0x0001 0xffeb 0x001a
+c   0x0009 0x000a 0x0001 0xffeb 0x001b
+c   0x0009 0x0013 0x0001 0xffeb 0x001c
+c   0x0009 0x0013 0x0002 0xffeb 0x001d
+c   0x0009 0x0013 0x0002 0xffed 0x001e
+c   0x0009 0x0013 0x0002 0xffed 0x0018
+c   0x0009 0x0013 0x0001 0xffed 0x0019
+c   0x0009 0x0013 0x0001 0xffee 0x001a
+c   0x0008 0x0013 0x0001 0xffee 0x001b
+c   0x0008 0x001b 0x0001 0xffee 0x001c
+c   0x0008 0x001b 0x0002 0xffee 0x001d
+c   0x0008 0x001b 0x0002 0xfff0 0x001e
+c   0x0008 0x001b 0x0002 0xfff0 0x0018
+c   0x0008 0x001b 0x0001 0xfff0 0x0019
+c   0x0008 0x001b 0x0001 0xfff1 0x001a
+c   0x0007 0x001b 0x0001 0xfff1 0x001b
+c   0x0007 0x0022 0x0001 0xfff1 0x001c
+c   0x0007 0x0022 0x0002 0xfff1 0x001d
+c   0x0007 0x0022 0x0002 0xfff3 0x001e
+c   0x0007 0x0022 0x0002 0xfff3 0x0018
+c   0x0007 0x0022 0x0001 0xfff3 0x0019
+c   0x0007 0x0022 0x0001 0xfff4 0x001a
+c   0x0006 0x0022 0x0001 0xfff4 0x001b
+c   0x0006 0x0028 0x0001 0xfff4 0x001c
+c   0x0006 0x0028 0x0002 0xfff4 0x001d
+c   0x0006 0x0028 0x0002 0xfff6 0x001e
+c   0x0006 0x0028 0x0002 0xfff6 0x0018
+c   0x0006 0x0028 0x0001 0xfff6 0x0019
+c   0x0006 0x0028 0x0001 0xfff7 0x001a
+c   0x0005 0x0028 0x0001 0xfff7 0x001b
+c   0x0005 0x002d 0x0001 0xfff7 0x001c
+c   0x0005 0x002d 0x0002 0xfff7 0x001d
+c   0x0005 0x002d 0x0002 0xfff9 0x001e
+c   0x0005 0x002d 0x0002 0xfff9 0x0018
+c   0x0005 0x002d 0x0001 0xfff9 0x0019
+c   0x0005 0x002d 0x0001 0xfffa 0x001a
+c   0x0004 0x002d 0x0001 0xfffa 0x001b
+c   0x0004 0x0031 0x0001 0xfffa 0x001c
+c   0x0004 0x0031 0x0002 0xfffa 0x001d
+c   0x0004 0x0031 0x0002 0xfffc 0x001e
+c   0x0004 0x0031 0x0002 0xfffc 0x0018
+c   0x0004 0x0031 0x0001 0xfffc 0x0019
+c   0x0004 0x0031 0x0001 0xfffd 0x001a
+c   0x000f 0x0031 0x0001 0xfffd 0x001b
+c   0x000f 0x0040 0x0001 0xfffd 0x001c
+c   0x000f 0x0040 0x0002 0xfffd 0x001d
+c   0x000f 0x0040 0x0002 0xffff 0x001e
+c   0x000f 0x0040 0x0002 0xffff 0x001f
+
+program(0xa400,0x0120,0x4210,0x0301,0xa113,0xb443,0x031f,0x7340,0xb020,0x4d40,0x0301,0xb443,0x7140,0x4110,0xb443,0x7140,0xb223,0xa143,0x4110,0xa113,0xb443,0x0318,0x7340,0x0508,0x0301,0xa443,0x4140,0xa221,0x0302,0xa443,0x4540,0x0000,0x0008,0x000f,0x0004,0x0005,0x0006,0x0007,0x0008,0x0009,0x000a)
+
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1280" y="-20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>SETH_PC</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+0        x      x      x      x 0x0000
+c   0x0001      x      x      x 0x0001
+c   0x0001 0x0002      x      x 0x0002
+c   0x0001 0x0002 0x0003      x 0x0003
+c   0x0001 0x0002 0x0006      x 0x0004
+c   0x0001 0x0002 0x0006      x 0x0104
+c   0x0001 0x0002 0x0006 0x0004 0x0105
+c   0x0001 0x0002 0x0006 0x0004 0x0205
+c   0x0001 0x0002 0x0006 0x0004 0x0005
+c   0x0001 0x0002 0x0006 0x0004 0x0005
+
+# Note this is the same as &quot;program(...)&quot; used in other tests.
+memory RAM(0x000)=0x0101;
+memory RAM(0x001)=0x0202;
+memory RAM(0x002)=0x0303;
+memory RAM(0x003)=0xA333;
+memory RAM(0x004)=0x2501;
+memory RAM(0x005)=0x2500;
+memory RAM(0x104)=0x0404;
+memory RAM(0x105)=0x2502;
+memory RAM(0x205)=0x2500;
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1280" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>COND_PC</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString>CLK     R1     R2     R3     R4     PC
+
+0        x      x      x      x 0x0000
+c   0x00FF      x      x      x 0x0001
+c   0x00FF 0x00FE      x      x 0x0002
+c   0x00FF 0x00FE 0xFFFF      x 0x0003
+c   0x00FF 0x00FE 0xFFFF      x 0x0004
+c   0x00FF 0x0002 0xFFFF      x 0x0005
+c   0x00FF 0x0002 0xFFFF      x 0x0006
+c   0x00FF 0x0002 0xFFFF      x 0x0008
+
+
+program(0x01ff,0x02fe,0xb321,0x0d01,0x0202,0xb433,0xad52,0x0500,0x0112)</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Clock</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-180" y="40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Selector Bits</string>
+          <int>2</int>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="-500" y="-260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>NotConnected</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="-520" y="-260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>RAMDualAccess</elementName>
+      <elementAttributes>
+        <entry>
+          <string>AddrBits</string>
+          <int>16</int>
+        </entry>
+        <entry>
+          <string>isProgramMemory</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>RAM</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1980" y="540"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Probe</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>DATA</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-420" y="-260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-160" y="40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1960" y="460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="-540" y="220"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>16</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>8,8</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1680" y="760"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>8,8</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>16</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1740" y="820"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>16</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>8,8</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1740" y="760"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>DMUX</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-520" y="-300"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>INST</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1220" y="720"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="720" y="1260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>RS1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-360" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>RS1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>RS2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-260"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>RS2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-340" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WS</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-180"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WS</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-320" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>STR</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-300" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>STR</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1980" y="460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>ld</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1940" y="460"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WE</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>ld</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-240" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WE</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-280" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>ALUOP</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1240" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>RS1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="720" y="1040"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>DMUX</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-260" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>DMUX</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-480" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>NetName</string>
+          <string>SETH</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-460" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>extended_cu.dig</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+      </elementAttributes>
+      <pos x="-360" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>extended_regfile.dig</elementName>
+      <elementAttributes/>
+      <pos x="540" y="-280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1160" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>ALUIM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1180" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>And</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>inverterConfig</string>
+          <inverterConfig>
+            <string>In_4</string>
+          </inverterConfig>
+        </entry>
+        <entry>
+          <string>Inputs</string>
+          <int>4</int>
+        </entry>
+      </elementAttributes>
+      <pos x="740" y="1140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>3</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>1,1,1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="720" y="1060"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Checks FL reg</string>
+        </entry>
+      </elementAttributes>
+      <pos x="380" y="1160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1760" y="140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>PSTO</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1780" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1600" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>MEMIM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1620" y="200"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>IMM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1560" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Register</elementName>
+      <elementAttributes>
+        <entry>
+          <string>valueIsProbe</string>
+          <boolean>true</boolean>
+        </entry>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Label</string>
+          <string>COND</string>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>2</int>
+        </entry>
+      </elementAttributes>
+      <pos x="140" y="380"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
+      <pos x="120" y="360"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>3</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>2,1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="140" y="280"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WS</string>
+        </entry>
+      </elementAttributes>
+      <pos x="140" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Selector Bits</string>
+          <int>2</int>
+        </entry>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+      </elementAttributes>
+      <pos x="140" y="640"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Splitter</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>Input Splitting</string>
+          <string>16</string>
+        </entry>
+        <entry>
+          <string>Output Splitting</string>
+          <string>1,1,1,1,12</string>
+        </entry>
+      </elementAttributes>
+      <pos x="200" y="640"/>
+    </visualElement>
+    <visualElement>
+      <elementName>alu.dig</elementName>
+      <elementAttributes/>
+      <pos x="1260" y="120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>textFontSize</string>
+          <int>15</int>
+        </entry>
+        <entry>
+          <string>Description</string>
+          <string>SETH Logic</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1560" y="800"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>IMM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-560" y="340"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+        <entry>
+          <string>flipSelPos</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="-560" y="300"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CALREG</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-600" y="300"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1080" y="-20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Value</string>
+          <long>65535</long>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1040" y="20"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CALL</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1100" y="40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>IMM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1100" y="160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>16</int>
+        </entry>
+      </elementAttributes>
+      <pos x="1920" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CALL</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1840" y="-140"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>Integration Tests</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1580" y="500"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>FIB_20</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This test calculates the 20th fibonacci number
+# which should be 6765 = 0x1A6D. Refer to fib.quac
+# in the assignment repo for the assembly code.
+
+	CLK	R4
+
+loop(i, 226)
+	c	x	#Don&apos;t care about intermediate steps
+end loop
+
+	c	6765	#Result of fibonacci number calculation
+
+program(0x0000, 0x2201, 0x0114, 0x0000, 0x0000, 0x3101, 0x1014, 0x44AF, 0x0532, 0x0000, 0x43AF, 0x44AE, 0xA443, 0x7420, 0xB5E1, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x90A1, 0xF101, 0xBDE1, 0x0301, 0x93A1, 0xF101, 0xBDE1, 0x030A, 0x3300, 0xE201, 0x0519, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1600" y="580"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>MULT_11x13 (Function Calls)</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This test multiplies 11 by 13 by repeated addition. 11 x 13 = 143,
+# so the result of R4 at the end should be 143.
+
+	CLK	R4
+
+loop(i, 86)
+	c	x	#Don&apos;t care about intermediate steps
+end loop
+
+	c	0x008F	#Result of multiplication
+
+program(0x100B, 0x0515, 0xA442, 0xF301, 0xB5E1, 0x0000, 0x0000, 0x1002, 0xBDE1, 0x0507, 0x0000, 0x0000, 0x5213, 0x5314, 0x1006, 0xB5E1, 0x0000, 0x0000, 0x0000, 0x000B, 0x000D, 0x0200, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="1100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>SETH</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-220" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>R3</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-200" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>IMM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-180" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>R3</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>RS1</string>
+        </entry>
+      </elementAttributes>
+      <pos x="260" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Multiplexer</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Bits</string>
+          <int>3</int>
+        </entry>
+      </elementAttributes>
+      <pos x="300" y="-160"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Value</string>
+          <long>6</long>
+        </entry>
+        <entry>
+          <string>Bits</string>
+          <int>3</int>
+        </entry>
+      </elementAttributes>
+      <pos x="260" y="-120"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CALL</string>
+        </entry>
+      </elementAttributes>
+      <pos x="320" y="-80"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WE2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-80"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="2"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>FLEN</string>
+        </entry>
+      </elementAttributes>
+      <pos x="500" y="-40"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>MEMIM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="660" y="1080"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>FACTORIAL_7</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This test calculates 7! = 5040.
+
+	CLK	R4
+
+loop(i, 5514)
+	c	x	#Don&apos;t care about intermediate steps
+end loop
+
+	c	5040	#Result of factorial
+
+program(0x0107, 0x61F0, 0x2210, 0x0301, 0x7320, 0x102D, 0x053B, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0400, 0x51F1, 0x53F2, 0xA010, 0x6CF3, 0xBDE1, 0xA443, 0xF101, 0xF505, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x4120, 0x61F1, 0x0300, 0x2310, 0xB323, 0xE301, 0x63F2, 0x100F, 0x51F3, 0x81A1, 0xB5E1, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0100, 0x2110, 0xB121, 0x53F0, 0xB031, 0x4C20, 0x6CF4, 0xBDE1, 0x101D, 0xF509, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1440" y="580"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>FLEN</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-140" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>PSTO</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-160" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>ALUOP</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-120" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>WE2</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-100" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>MEMIM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-80" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CALL</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-40" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>CALREG</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-60" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Tunnel</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+        <entry>
+          <string>NetName</string>
+          <string>ALUIM</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-20" y="320"/>
+    </visualElement>
+    <visualElement>
+      <elementName>LED</elementName>
+      <elementAttributes>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="1"/>
+        </entry>
+      </elementAttributes>
+      <pos x="0" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Const</elementName>
+      <elementAttributes/>
+      <pos x="500" y="-100"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>textFontSize</string>
+          <int>15</int>
+        </entry>
+        <entry>
+          <string>Description</string>
+          <string>Address Bus</string>
+        </entry>
+        <entry>
+          <string>rotation</string>
+          <rotation rotation="3"/>
+        </entry>
+      </elementAttributes>
+      <pos x="1940" y="240"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Description</string>
+          <string>UNIT TESTS FOR EACH EXTENSION
+(Except Pre/Post LDR/STR, these tests
+are not converted to digital tests, but they
+can be found in the unit tests folder)</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1600" y="700"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>ALUIM</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This tests ALU immediate operations. R1 tests add, R2 tests sub, R3 tests AND, R4 tests ORR
+# Assembly: unit_tests/aluim.quac
+	CLK	R1	R2	R3	R4
+
+loop(i, 55)
+	c	x	x	x	x	#Don&apos;t care about intermediate steps
+end loop
+
+	c	(210)	(21)	(58)	(241)
+
+program(0x0000, 0x0000, 0xE101, 0xE102, 0xE103, 0xE104, 0xE105, 0xE106, 0xE107, 0xE108, 0xE109, 0xE10A, 0xE10B, 0xE10C, 0xE10D, 0xE10E, 0xE10F, 0xE110, 0xE111, 0xE112, 0xE113, 0xE114, 0x02D2, 0xF214, 0xF213, 0xF212, 0xF211, 0xF210, 0xF20F, 0xF20E, 0xF20D, 0xF20C, 0xF20B, 0xF20A, 0xF209, 0xF208, 0xF207, 0x03FF, 0xC3FF, 0xC3FB, 0xC3BF, 0xC3BB, 0xC3FF, 0xC3FE, 0xC37F, 0x0000, 0xD400, 0xD401, 0xD481, 0xD410, 0xD420, 0xD401, 0xD440, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1600" y="860"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>MEMIM</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This tests memory immediate operations.
+# Assembly: unit_tests/memim.quac
+	CLK	R1	R2	R3	R4
+
+loop(i, 16)
+	c	x	x	x	x	#Don&apos;t care about intermediate steps
+end loop
+
+	c	(200)	(100)	(0xAD)	(0xDE)
+
+program(0x0000, 0x0000, 0x0000, 0x01DE, 0x02AD, 0x61FE, 0x62FF, 0x53FF, 0x54FE, 0x0164, 0x02C8, 0x6101, 0x6202, 0x5201, 0x5102, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1420" y="860"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>BASE-OFFSET</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This tests base+offset immediate operations.
+# Assembly: unit_tests/base_offset.quac
+	CLK	R1	R2	R3	R4
+
+loop(i, 24)
+	c	x	x	x	x	#Don&apos;t care about intermediate steps
+end loop
+
+	c	(3)	x	(4)	(5)
+
+loop(i, 21)
+	c	x	x	x	x	
+end loop
+	c	(0)	(0x2B)	(7)	(0x1B)
+
+program(0x0000, 0x0000, 0x0000, 0x0103, 0x02F0, 0x0300, 0x7123, 0x0301, 0x0104, 0x7123, 0x0302, 0x0105, 0x7123, 0x0303, 0x0106, 0x7123, 0x4124, 0x0401, 0x4324, 0x0402, 0x4424, 0x0000, 0x0000, 0x0000, 0x020B, 0x01E0, 0x729F, 0x021B, 0x7298, 0x022B, 0x7297, 0x023B, 0x7294, 0x0305, 0x7392, 0x0306, 0x739C, 0x0307, 0x739B, 0x0308, 0x7396, 0x4297, 0x439B, 0x4498, 0x4190, 0x0000, 0x0000, 0x0000)</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1240" y="860"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>SETC</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This tests SETC.
+# Assembly: unit_tests/setc.quac
+	CLK	R1	R2	R3	R4
+
+loop(i, 30)
+	c	x	x	x	x	#Don&apos;t care about intermediate steps
+end loop
+	c	(0)	(50)	(60)	(0)
+
+program(0x0000, 0x3101, 0xE000, 0x09FF, 0xF005, 0x09FF, 0x3201, 0x0900, 0x3301, 0x0900, 0x3001, 0x0900, 0x3101, 0x0900, 0x3001, 0xE000, 0x09FF, 0x3301, 0x0101, 0x2141, 0xA111, 0x0100, 0x3001, 0x0A32, 0x3101, 0x0A32, 0x3201, 0x0B3C, 0x3301, 0x0A46, 0x0000, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1520" y="980"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>PUSH POP</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This tests PUSH and POP operation.
+# Assembly: unit_tests/stack.quac
+	CLK	R1	R2	R3	R4
+
+loop(i, 21)
+	c	x	x	x	x	#Don&apos;t care about intermediate steps
+end loop
+	c	(0xE9)	(0xCA)	(0xAB)	(1)
+
+program(0x0000, 0x0000, 0x0000, 0x0101, 0x02AB, 0x03DE, 0x0423, 0x81EF, 0x82EF, 0x83EF, 0x84EF, 0xB0E1, 0xB0E1, 0x01CA, 0x02E9, 0x81EF, 0x82EF, 0xB1E1, 0xB2E1, 0xB3E1, 0xB4E1, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1320" y="980"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Testcase</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>BUBBLE SORT</string>
+        </entry>
+        <entry>
+          <string>Testdata</string>
+          <testData>
+            <dataString># This test uses a 64-bit key-value pair bubble sort algorithm where comparisons are made only on keys, and key-value relationship remains unchanged.
+# For more information, see demo.quac.
+
+	CLK	R2
+
+loop(i, 598)
+	c	x
+end loop
+	c	0x0003
+	c	x
+	c	0x0064
+	c	x
+	c	0x006E
+	c	x
+	c	0x0078
+	c	x
+	c	0x0028
+	c	x
+	c	0x0007
+	c	x
+	c	0x0008
+	c	x
+	c	0x0009
+	c	x
+	c	0x0032
+	c	x
+	c	0x0004
+	c	x
+	c	0x0005
+	c	x
+	c	0x0006
+	c	x
+	c	0x0082
+	c	x
+	c	0x0001
+	c	x
+	c	0x0002
+	c	x
+	c	0x0003
+	c	x
+	c	0x00C9
+	c	x
+	c	0x000A
+	c	x
+	c	0x000B
+	c	x
+	c	0x000C
+	c	x
+
+
+program(0x1011, 0x106E, 0x057A, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0100, 0x0200, 0x0300, 0x0400, 0xB5E1, 0x0000, 0x0000, 0x100A, 0x0000, 0x2103, 0x0000, 0x0282, 0x9294, 0x0232, 0x9294, 0x0228, 0x9294, 0x02C9, 0x9294, 0x0203, 0x9294, 0x0100, 0x2103, 0x0000, 0x0201, 0x0302, 0x0403, 0x8291, 0x8391, 0x8491, 0x0204, 0x0305, 0x0406, 0x8292, 0x8391, 0x8491, 0x0207, 0x0308, 0x0409, 0x8292, 0x8391, 0x8491, 0x020A, 0x030B, 0x040C, 0x8292, 0x8391, 0x8491, 0x0264, 0x036E, 0x0478, 0x8292, 0x8391, 0x8491, 0x0100, 0x2103, 0x61F2, 0x0210, 0xA112, 0x61F1, 0xB5E1, 0x0000, 0x0000, 0x3001, 0x51F2, 0x0200, 0x4312, 0xE104, 0x4412, 0x7312, 0xF104, 0x7412, 0xE201, 0x0304, 0xB023, 0xBDE1, 0xF50A, 0x0000, 0x0000, 0x0000, 0x0100, 0x2103, 0x61F2, 0x52F2, 0x51F1, 0x3001, 0xB012, 0xBDE1, 0x3101, 0x4320, 0x44A4, 0xB043, 0x1849, 0x3101, 0x52F2, 0xE204, 0x62F2, 0xF50D, 0x0000, 0x0000, 0x3001, 0x015A, 0x3100, 0x52F1, 0xF204, 0x62F1, 0x0300, 0x2303, 0xB023, 0xBDE1, 0xF509, 0x0000, 0x0100, 0x2103, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x4210, 0xE101, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000)
+</dataString>
+          </testData>
+        </entry>
+      </elementAttributes>
+      <pos x="-1260" y="580"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Text</elementName>
+      <elementAttributes>
+        <entry>
+          <string>textFontSize</string>
+          <int>30</int>
+        </entry>
+        <entry>
+          <string>Description</string>
+          <string>Assembly tests converted to Digital</string>
+        </entry>
+      </elementAttributes>
+      <pos x="-1580" y="420"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="1120" y="0"/>
+      <p2 x="1160" y="0"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="640"/>
+      <p2 x="180" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="200" y="640"/>
+      <p2 x="940" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="-520" y="-260"/>
+      <p2 x="-500" y="-260"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-260"/>
+      <p2 x="540" y="-260"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="-260"/>
+      <p2 x="1920" y="-260"/>
+    </wire>
+    <wire>
+      <p1 x="720" y="1220"/>
+      <p2 x="940" y="1220"/>
+    </wire>
+    <wire>
+      <p1 x="-520" y="900"/>
+      <p2 x="980" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="580"/>
+      <p2 x="180" y="580"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="-200"/>
+      <p2 x="1880" y="-200"/>
+    </wire>
+    <wire>
+      <p1 x="-520" y="-200"/>
+      <p2 x="-500" y="-200"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-200"/>
+      <p2 x="540" y="-200"/>
+    </wire>
+    <wire>
+      <p1 x="-500" y="200"/>
+      <p2 x="-460" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="1840" y="-140"/>
+      <p2 x="1880" y="-140"/>
+    </wire>
+    <wire>
+      <p1 x="340" y="-140"/>
+      <p2 x="540" y="-140"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="140"/>
+      <p2 x="1260" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="1640" y="140"/>
+      <p2 x="1760" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="1360" y="140"/>
+      <p2 x="1420" y="140"/>
+    </wire>
+    <wire>
+      <p1 x="720" y="1100"/>
+      <p2 x="740" y="1100"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-80"/>
+      <p2 x="540" y="-80"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="-20"/>
+      <p2 x="1080" y="-20"/>
+    </wire>
+    <wire>
+      <p1 x="1040" y="20"/>
+      <p2 x="1080" y="20"/>
+    </wire>
+    <wire>
+      <p1 x="-700" y="1300"/>
+      <p2 x="1460" y="1300"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-280"/>
+      <p2 x="540" y="-280"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="-280"/>
+      <p2 x="1240" y="-280"/>
+    </wire>
+    <wire>
+      <p1 x="1240" y="-280"/>
+      <p2 x="1740" y="-280"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="600"/>
+      <p2 x="180" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="-340" y="600"/>
+      <p2 x="100" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="600"/>
+      <p2 x="1460" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="-600" y="280"/>
+      <p2 x="-560" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="-660" y="1240"/>
+      <p2 x="680" y="1240"/>
+    </wire>
+    <wire>
+      <p1 x="-460" y="-220"/>
+      <p2 x="-420" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="-660" y="-220"/>
+      <p2 x="-500" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="-220"/>
+      <p2 x="980" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="-420" y="-220"/>
+      <p2 x="540" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="-500" y="860"/>
+      <p2 x="1740" y="860"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-160"/>
+      <p2 x="540" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="260" y="-160"/>
+      <p2 x="300" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="1800" y="160"/>
+      <p2 x="1920" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="1240" y="160"/>
+      <p2 x="1260" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="1560" y="160"/>
+      <p2 x="1600" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="1100" y="160"/>
+      <p2 x="1160" y="160"/>
+    </wire>
+    <wire>
+      <p1 x="700" y="1120"/>
+      <p2 x="720" y="1120"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-100"/>
+      <p2 x="540" y="-100"/>
+    </wire>
+    <wire>
+      <p1 x="-360" y="740"/>
+      <p2 x="1680" y="740"/>
+    </wire>
+    <wire>
+      <p1 x="1680" y="740"/>
+      <p2 x="1960" y="740"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-40"/>
+      <p2 x="540" y="-40"/>
+    </wire>
+    <wire>
+      <p1 x="20" y="360"/>
+      <p2 x="100" y="360"/>
+    </wire>
+    <wire>
+      <p1 x="-180" y="40"/>
+      <p2 x="-160" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="620"/>
+      <p2 x="180" y="620"/>
+    </wire>
+    <wire>
+      <p1 x="720" y="1260"/>
+      <p2 x="1980" y="1260"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-240"/>
+      <p2 x="540" y="-240"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="-240"/>
+      <p2 x="1760" y="-240"/>
+    </wire>
+    <wire>
+      <p1 x="-700" y="-240"/>
+      <p2 x="-500" y="-240"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="560"/>
+      <p2 x="1420" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="500" y="-180"/>
+      <p2 x="540" y="-180"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="-180"/>
+      <p2 x="940" y="-180"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="180"/>
+      <p2 x="1760" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="1680" y="820"/>
+      <p2 x="1720" y="820"/>
+    </wire>
+    <wire>
+      <p1 x="260" y="-120"/>
+      <p2 x="300" y="-120"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="-120"/>
+      <p2 x="540" y="-120"/>
+    </wire>
+    <wire>
+      <p1 x="1240" y="120"/>
+      <p2 x="1260" y="120"/>
+    </wire>
+    <wire>
+      <p1 x="1360" y="120"/>
+      <p2 x="1460" y="120"/>
+    </wire>
+    <wire>
+      <p1 x="1460" y="120"/>
+      <p2 x="1600" y="120"/>
+    </wire>
+    <wire>
+      <p1 x="1760" y="-60"/>
+      <p2 x="1880" y="-60"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="-60"/>
+      <p2 x="540" y="-60"/>
+    </wire>
+    <wire>
+      <p1 x="0" y="240"/>
+      <p2 x="0" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1920" y="160"/>
+      <p2 x="1920" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="1920" y="-260"/>
+      <p2 x="1920" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="-260" y="320"/>
+      <p2 x="-260" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-520" y="-200"/>
+      <p2 x="-520" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="-520" y="300"/>
+      <p2 x="-520" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1160" y="0"/>
+      <p2 x="1160" y="120"/>
+    </wire>
+    <wire>
+      <p1 x="-140" y="320"/>
+      <p2 x="-140" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="300"/>
+      <p2 x="140" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="140" y="240"/>
+      <p2 x="140" y="280"/>
+    </wire>
+    <wire>
+      <p1 x="1420" y="140"/>
+      <p2 x="1420" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="1680" y="780"/>
+      <p2 x="1680" y="820"/>
+    </wire>
+    <wire>
+      <p1 x="1680" y="740"/>
+      <p2 x="1680" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="-660" y="-220"/>
+      <p2 x="-660" y="1240"/>
+    </wire>
+    <wire>
+      <p1 x="-20" y="320"/>
+      <p2 x="-20" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="660" y="1080"/>
+      <p2 x="660" y="1120"/>
+    </wire>
+    <wire>
+      <p1 x="20" y="360"/>
+      <p2 x="20" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1940" y="460"/>
+      <p2 x="1940" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="-280" y="320"/>
+      <p2 x="-280" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-540" y="220"/>
+      <p2 x="-540" y="260"/>
+    </wire>
+    <wire>
+      <p1 x="1180" y="160"/>
+      <p2 x="1180" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="-160" y="320"/>
+      <p2 x="-160" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-420" y="-260"/>
+      <p2 x="-420" y="-220"/>
+    </wire>
+    <wire>
+      <p1 x="420" y="-60"/>
+      <p2 x="420" y="560"/>
+    </wire>
+    <wire>
+      <p1 x="-40" y="320"/>
+      <p2 x="-40" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="680" y="1080"/>
+      <p2 x="680" y="1140"/>
+    </wire>
+    <wire>
+      <p1 x="1960" y="600"/>
+      <p2 x="1960" y="740"/>
+    </wire>
+    <wire>
+      <p1 x="1960" y="460"/>
+      <p2 x="1960" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="-300" y="320"/>
+      <p2 x="-300" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="940" y="-180"/>
+      <p2 x="940" y="640"/>
+    </wire>
+    <wire>
+      <p1 x="940" y="640"/>
+      <p2 x="940" y="1220"/>
+    </wire>
+    <wire>
+      <p1 x="-560" y="300"/>
+      <p2 x="-560" y="340"/>
+    </wire>
+    <wire>
+      <p1 x="-180" y="320"/>
+      <p2 x="-180" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1460" y="120"/>
+      <p2 x="1460" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="1460" y="600"/>
+      <p2 x="1460" y="1300"/>
+    </wire>
+    <wire>
+      <p1 x="-700" y="-240"/>
+      <p2 x="-700" y="1300"/>
+    </wire>
+    <wire>
+      <p1 x="-60" y="320"/>
+      <p2 x="-60" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="700" y="1200"/>
+      <p2 x="700" y="1220"/>
+    </wire>
+    <wire>
+      <p1 x="700" y="1080"/>
+      <p2 x="700" y="1120"/>
+    </wire>
+    <wire>
+      <p1 x="1980" y="600"/>
+      <p2 x="1980" y="1260"/>
+    </wire>
+    <wire>
+      <p1 x="1980" y="460"/>
+      <p2 x="1980" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="-320" y="320"/>
+      <p2 x="-320" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="320" y="-120"/>
+      <p2 x="320" y="-80"/>
+    </wire>
+    <wire>
+      <p1 x="-200" y="320"/>
+      <p2 x="-200" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="1100" y="20"/>
+      <p2 x="1100" y="40"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="780"/>
+      <p2 x="1740" y="820"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="840"/>
+      <p2 x="1740" y="860"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="-280"/>
+      <p2 x="1740" y="180"/>
+    </wire>
+    <wire>
+      <p1 x="1740" y="180"/>
+      <p2 x="1740" y="760"/>
+    </wire>
+    <wire>
+      <p1 x="-80" y="320"/>
+      <p2 x="-80" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="720" y="1080"/>
+      <p2 x="720" y="1100"/>
+    </wire>
+    <wire>
+      <p1 x="720" y="1040"/>
+      <p2 x="720" y="1060"/>
+    </wire>
+    <wire>
+      <p1 x="720" y="1120"/>
+      <p2 x="720" y="1140"/>
+    </wire>
+    <wire>
+      <p1 x="-340" y="320"/>
+      <p2 x="-340" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-340" y="500"/>
+      <p2 x="-340" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="-220"/>
+      <p2 x="980" y="-20"/>
+    </wire>
+    <wire>
+      <p1 x="980" y="-20"/>
+      <p2 x="980" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1620" y="160"/>
+      <p2 x="1620" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="-600" y="280"/>
+      <p2 x="-600" y="300"/>
+    </wire>
+    <wire>
+      <p1 x="1240" y="160"/>
+      <p2 x="1240" y="200"/>
+    </wire>
+    <wire>
+      <p1 x="1240" y="-280"/>
+      <p2 x="1240" y="120"/>
+    </wire>
+    <wire>
+      <p1 x="1880" y="-60"/>
+      <p2 x="1880" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="1880" y="-200"/>
+      <p2 x="1880" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="-220" y="320"/>
+      <p2 x="-220" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-480" y="-180"/>
+      <p2 x="-480" y="-160"/>
+    </wire>
+    <wire>
+      <p1 x="1760" y="-240"/>
+      <p2 x="1760" y="-60"/>
+    </wire>
+    <wire>
+      <p1 x="-100" y="320"/>
+      <p2 x="-100" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="100" y="360"/>
+      <p2 x="100" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="740" y="1100"/>
+      <p2 x="740" y="1140"/>
+    </wire>
+    <wire>
+      <p1 x="-360" y="320"/>
+      <p2 x="-360" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-360" y="500"/>
+      <p2 x="-360" y="740"/>
+    </wire>
+    <wire>
+      <p1 x="360" y="-120"/>
+      <p2 x="360" y="600"/>
+    </wire>
+    <wire>
+      <p1 x="1900" y="-120"/>
+      <p2 x="1900" y="540"/>
+    </wire>
+    <wire>
+      <p1 x="-240" y="320"/>
+      <p2 x="-240" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="-500" y="220"/>
+      <p2 x="-500" y="860"/>
+    </wire>
+    <wire>
+      <p1 x="1780" y="180"/>
+      <p2 x="1780" y="240"/>
+    </wire>
+    <wire>
+      <p1 x="-120" y="320"/>
+      <p2 x="-120" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="120" y="360"/>
+      <p2 x="120" y="380"/>
+    </wire>
+    <wire>
+      <p1 x="120" y="440"/>
+      <p2 x="120" y="560"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>

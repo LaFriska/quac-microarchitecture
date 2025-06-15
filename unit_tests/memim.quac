@@ -1,0 +1,20 @@
+NOP @This is a unit test for memory immediates.
+NOP 
+NOP
+MOVL R1, 0xDE
+MOVL R2, 0xAD
+STR R1, [0xFE]
+STR R2, [0xFF]
+LDR R3, [0xFF] @R3 should be 0xAD
+LDR R4, [0xFE] @R4 should be 0xDE
+MOVL R1, 100
+MOVL R2, 200
+STR R1, [0x01]
+STR R2, [0x02]
+LDR R2, [0x01]
+LDR R1, [0x02]
+NOP 
+@R1 = 200
+@R2 = 100
+@R3 = 0xAD
+@R4 = 0xDE
